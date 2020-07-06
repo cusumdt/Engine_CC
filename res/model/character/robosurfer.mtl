@@ -1,0 +1,175 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.05.2020 11:49:57
+
+newmtl 05___Default
+	Ns 400
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka steelscrews.jpg
+	map_Kd steelscrews.jpg
+
+newmtl Skin_Body
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8980 0.8980 0.8980
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Skin_Body_diffuse.jpg
+	map_Kd Skin_Body_diffuse.jpg
+	
+
+newmtl Skin_Head
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8980 0.8980 0.8980
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Skin_Head_diffuse.jpg
+	map_Kd Skin_Head_diffuse.jpg
+	
+
+newmtl Fingernail
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8980 0.8980 0.8980
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Fingernail_diffuse.jpg
+	map_Kd Fingernail_diffuse.jpg
+	
+
+newmtl Toenail
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8980 0.8980 0.8980
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Toenail_diffuse.jpg
+	map_Kd Toenail_diffuse.jpg
+	
+
+newmtl Std_Eye_R
+	Ns 500
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8980 0.8980 0.8980
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Std_Eye_R_diffuse.jpg
+	map_Kd Std_Eye_R_diffuse.jpg
+
+newmtl Std_Cornea_R
+	Ns 500
+	Ni 1.5000
+	d 0.8000
+	Tr 0.2000
+	Tf 0.8000 0.8000 0.8000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Std_Cornea_R_diffuse.jpg
+	map_Kd Std_Cornea_R_diffuse.jpg
+
+newmtl Std_Eye_L
+	Ns 500
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8980 0.8980 0.8980
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Std_Eye_L_diffuse.jpg
+	map_Kd Std_Eye_L_diffuse.jpg
+
+newmtl Std_Cornea_L
+	Ns 500
+	Ni 1.5000
+	d 0.8000
+	Tr 0.2000
+	Tf 0.8000 0.8000 0.8000 
+	illum 2
+	Ka 0.1961 0.1961 0.1961
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Std_Cornea_L_diffuse.jpg
+	map_Kd Std_Cornea_L_diffuse.jpg
+
+newmtl Material_001
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4333 0.4333 0.4333
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.2000 0.2000 0.2000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka metal.jpg
+	map_Kd metal.jpg
+
+newmtl Material__66
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka chromebrushed.jpg
+	map_Kd chromebrushed.jpg
+
+newmtl 06___Default
+	Ns 300
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka rainbowlines-2.jpg
+	map_Kd rainbowlines-2.jpg
+	map_Ke rainbowlines-2.jpg

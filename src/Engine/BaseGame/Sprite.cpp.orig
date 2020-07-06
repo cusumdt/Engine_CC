@@ -1,0 +1,211 @@
+#include "Sprite.h"
+#include <fstream>
+#include <sstream>
+#include "Window.h"
+
+using namespace Graficos1;
+
+Sprite::Sprite()
+{
+	VertexArrayID = 0;
+	VertexBuffer = 0;
+	shader = 0;
+}
+
+Sprite::Sprite(int newx, int newy)
+{
+	moveTo((float)newx, (float)newy, 0);
+	VertexArrayID = 0;
+	VertexBuffer = 0;
+	shader = 0;
+}
+
+Sprite::Sprite(float newx, float newy)
+{
+	moveTo(newx, newy, 0);
+	VertexArrayID = 0;
+	VertexBuffer = 0;
+	shader = 0;
+}
+
+Sprite::Sprite(vec2 v)
+{
+	//vec.x = v.x;
+	//vec.y = v.y;
+	VertexArrayID = 0;
+	VertexBuffer = 0;
+	shader = 0;
+}
+
+void Sprite::set(Renderer renderer, Color spriteColor)
+{
+	currentRenderer = renderer;
+	ShaderProgramSource source = currentRenderer.ShaderParser("res/shaders/Shape.shader");
+	shader = currentRenderer.CreateShader(source.vertexSource, source.fragmentSource);
+	glUseProgram(shader);
+
+	mat4 proj = currentRenderer.GetProjection();
+	mat4 view = currentRenderer.GetView();
+
+	vec2 texCoords[] =
+	{
+<<<<<<< HEAD
+		{ 0.0f, 0.0f },
+		{ 1.0f, 0.0f },
+		{ 1.0f, 1.0f },
+		{ 0.0f, 1.0f }
+	};
+
+	vec2 spriteVertexes[] =
+=======
+		{ 0.0f, 0.0f }, // bottom-left
+		{ 0.125f, 0.0f }, // bottom-right
+		{ 0.125f, 0.5f }, // top-right
+		{ 0.0f, 0.5f } // top-left
+	};
+
+	spriteVertexes[0] = { -0.4f, -0.4f };
+	spriteVertexes[1] = { 0.4f, -0.4f };
+	spriteVertexes[2] = { 0.4f, 0.4f };
+	spriteVertexes[3] = { -0.4f, 0.4f };
+
+	/*spriteVertexes[4] =
+>>>>>>> animation
+	{
+		{ -0.4f, -0.4f },
+		{ 0.4f, -0.4f },
+		{ 0.4f, 0.4f },
+	    { -0.4f, 0.4f}
+<<<<<<< HEAD
+	};
+
+	float red2 = spriteColor.GetRed() * RGBTODECIMAL;
+	float green2 = spriteColor.GetGreen() * RGBTODECIMAL;
+	float blue2 = spriteColor.GetBlue() * RGBTODECIMAL;
+	float alpha2 = spriteColor.GetAlpha() * RGBTODECIMAL;
+
+=======
+	};*/
+
+	red = spriteColor.GetRed() * RGBTODECIMAL;
+	green = spriteColor.GetGreen() * RGBTODECIMAL;
+	blue = spriteColor.GetBlue() * RGBTODECIMAL;
+	alpha = spriteColor.GetAlpha() * RGBTODECIMAL;
+
+>>>>>>> animation
+	
+
+	glGenVertexArrays(1, &VertexArrayID);
+	glBindVertexArray(VertexArrayID);
+
+	const GLfloat g_vertex_buffer_data[] =
+	{
+<<<<<<< HEAD
+		   spriteVertexes[0].x, spriteVertexes[0].y, red2, green2, blue2, alpha2, texCoords[0].x, texCoords[0].y,
+		   spriteVertexes[1].x, spriteVertexes[1].y, red2, green2, blue2, alpha2, texCoords[1].x, texCoords[1].y,
+		   spriteVertexes[2].x, spriteVertexes[2].y, red2, green2, blue2, alpha2, texCoords[2].x, texCoords[2].y,
+		   spriteVertexes[3].x, spriteVertexes[3].y, red2, green2, blue2, alpha2, texCoords[3].x, texCoords[3].y
+=======
+		   spriteVertexes[0].x, spriteVertexes[0].y, red, green, blue, alpha, texCoords[0].x, texCoords[0].y,
+		   spriteVertexes[1].x, spriteVertexes[1].y, red, green, blue, alpha, texCoords[1].x, texCoords[1].y,
+		   spriteVertexes[2].x, spriteVertexes[2].y, red, green, blue, alpha, texCoords[2].x, texCoords[2].y,
+		   spriteVertexes[3].x, spriteVertexes[3].y, red, green, blue, alpha, texCoords[3].x, texCoords[3].y
+>>>>>>> animation
+	};
+
+	// Identificar el vertex buffer
+	// Generar un buffer, poner el resultado en el vertexbuffer que acabamos de crear
+	glGenBuffers(1, &VertexBuffer);
+	// Los siguientes comandos le darán características especiales al 'vertexbuffer' 
+	glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+	// Darle nuestros vértices a  OpenGL.
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+	// Create an element array
+	GLuint ebo;
+	glGenBuffers(1, &ebo);
+
+	GLuint elements[] =
+	{
+		0, 1, 2, 3
+	};
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
+
+
+
+	// Specify the layout of the vertex data
+	posAttrib = glGetAttribLocation(shader, "position");
+	glEnableVertexAttribArray(posAttrib);
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
+
+	colAttrib = glGetAttribLocation(shader, "color");
+	glEnableVertexAttribArray(colAttrib);
+	glVertexAttribPointer(colAttrib, 4, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
+
+	texAttrib = glGetAttribLocation(shader, "texturePos");
+	glEnableVertexAttribArray(texAttrib);
+	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+
+
+	uniModel = glGetUniformLocation(shader, "model");
+	model = glm::translate(glm::vec3(0.0f, 0.0f, 0.0f));
+	glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
+
+	currentRenderer.SetUniView(glGetUniformLocation(shader, "view"));
+	glUniformMatrix4fv(currentRenderer.GetUniView(), 1, GL_FALSE, glm::value_ptr(view));
+
+	currentRenderer.SetUniProj(glGetUniformLocation(shader, "proj"));
+	glUniformMatrix4fv(currentRenderer.GetUniProj(), 1, GL_FALSE, glm::value_ptr(proj));
+
+	glUniform1i(glGetUniformLocation(shader, "texture1"), 0); // set it manually
+	glUniform1i(glGetUniformLocation(shader, "texture2"), 1); // set it manually
+}
+
+<<<<<<< HEAD
+=======
+void Sprite::UpdateSprite(int row,bool isReversed)
+{
+	if (isReversed)
+	{
+		animation.UpdateReverse(row, 0);
+	}
+	else
+	{
+		animation.Update(row, 0);
+	}
+
+	const GLfloat g_vertex_buffer_data[] =
+	{
+		   spriteVertexes[0].x, spriteVertexes[0].y, red, green, blue, alpha, animation.newTexCoords[0].x, animation.newTexCoords[0].y,
+		   spriteVertexes[1].x, spriteVertexes[1].y, red, green, blue, alpha, animation.newTexCoords[1].x, animation.newTexCoords[1].y,
+		   spriteVertexes[2].x, spriteVertexes[2].y, red, green, blue, alpha, animation.newTexCoords[2].x, animation.newTexCoords[2].y,
+		   spriteVertexes[3].x, spriteVertexes[3].y, red, green, blue, alpha, animation.newTexCoords[3].x, animation.newTexCoords[3].y
+	};
+
+	glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+	// Darle nuestros vértices a  OpenGL.
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+}
+
+void Sprite::SetAnimation(vec2 imageCount)
+{
+	Animation newAnimation(texture1, imageCount, 0);
+	animation = newAnimation;
+}
+
+>>>>>>> animation
+void Sprite::draw()
+{
+	glUseProgram(shader);
+	glBindVertexArray(VertexArrayID);
+	//glEnableVertexAttribArray(colAttrib);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture1.GetTexture());
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, texture2.GetTexture());
+	glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
+	glDrawElements(GL_QUADS, 4, GL_UNSIGNED_INT, 0);
+}
