@@ -40,6 +40,7 @@ void Entity3D::set(string modelPath, Color color, ModelsConfig config, bool flip
 		shader.ID = Shader::CreateShader(source.vertexSource, source.fragmentSource);
 		model3D.shader = shader;
 	}
+
 	
 	
 
@@ -82,6 +83,8 @@ void Entity3D::set(string modelPath, Color color, ModelsConfig config, bool flip
 	{
 		children.push_back(entities2.at(i));
 	}
+	boundingBoxMin = model3D.boundingBoxMin;
+	boundingBoxMax = model3D.boundingBoxMax;
 }
 void Entity3D::SetParent(Entity3D newParent)
 {

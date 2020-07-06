@@ -1,6 +1,5 @@
 #include "Model.h"
 #include "BaseGame.h"
-
 //#define STB_IMAGE_IMPLEMENTATION 
 
 using namespace Engine;
@@ -110,18 +109,29 @@ void Model::processNode(aiNode* node, const aiScene* scene)
 }
 void Model::GenerateBoundingBox()
 {
-	vec3 boundingBoxVertices[BOX_VERTEX] =
-	{
-		vec3(boundingBoxMin.x, boundingBoxMin.y, boundingBoxMin.z),
-		vec3(boundingBoxMin.x, boundingBoxMax.y, boundingBoxMin.z),
-		vec3(boundingBoxMin.x, boundingBoxMin.y, boundingBoxMax.z),
-		vec3(boundingBoxMin.x, boundingBoxMax.y, boundingBoxMax.z),
-		vec3(boundingBoxMax.x, boundingBoxMin.y, boundingBoxMin.z),
-		vec3(boundingBoxMax.x, boundingBoxMax.y, boundingBoxMin.z),
-		vec3(boundingBoxMax.x, boundingBoxMin.y, boundingBoxMax.z),
-		vec3(boundingBoxMax.x, boundingBoxMax.y, boundingBoxMax.z)
-	};
+	
 
+	float boundingBoxVertices[BOX_VERTEX*3] =
+	{
+		boundingBoxMin.x, boundingBoxMin.y, boundingBoxMin.z,
+		boundingBoxMin.x, boundingBoxMax.y, boundingBoxMin.z,
+		boundingBoxMin.x, boundingBoxMin.y, boundingBoxMax.z,
+		boundingBoxMin.x, boundingBoxMax.y, boundingBoxMax.z,
+		boundingBoxMax.x, boundingBoxMin.y, boundingBoxMin.z,
+		boundingBoxMax.x, boundingBoxMax.y, boundingBoxMin.z,
+		boundingBoxMax.x, boundingBoxMin.y, boundingBoxMax.z,
+		boundingBoxMax.x, boundingBoxMax.y, boundingBoxMax.z
+	};
+	cout << "xMin" << boundingBoxMin.x << endl << "yMin" << boundingBoxMin.y << endl << "zMin" << boundingBoxMin.z << endl<< "xMax" << boundingBoxMax.x <<endl << "yMax" << boundingBoxMax.y << endl << "zMax" << boundingBoxMax.z << endl;
+	// Box
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, boundingBoxVertices);
+
+	glDrawArrays(GL_QUADS, 0, 24);
+
+
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 }
 Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
@@ -347,6 +357,9 @@ void Model::Draw(mat4 model)
 
 	for (unsigned int i = 0; i < meshes.size(); i++)
 		meshes[i].Draw(shader, config);
+
+	GenerateBoundingBox();
+
 }
 
 void Model::SetMeshTexture(int meshIndex, Texture newTexture)

@@ -36,13 +36,19 @@ void Game::InitGame()
 	skybox.setPosition(vec3(180, -0.3f, 0));
 	skybox.SetTexture(0, "texture_diffuse", "res/textures/models/skybox/Sky.jpg");
 	// Mtl
-	character.set("res/model/box2.fbx", Colors.White, ModelsConfig::A, false,light);
+	character.set("res/model/character/robosurfer2.obj", Colors.White, ModelsConfig::A, false,light);
 	character.Scale(vec3(1, 1, 1));
-	character.setPosition(vec3(30,-10,0));
-	character.Rotate(vec3(-90, 0, 0));
+	character.setPosition(vec3(10,0,0));
+	character.Rotate(vec3(0, 0, 0));
 
+	box.set("res/model/box.fbx", Colors.White, ModelsConfig::A, false, light);
+	box.SetTexture(0, "texture_diffuse", "res/model/color.jpg");
+	box.Scale(vec3(character.boundingBoxMax.x + (character.boundingBoxMin.x * -1) , character.boundingBoxMax.y + (character.boundingBoxMin.y * -1), character.boundingBoxMax.z + (character.boundingBoxMin.z * -1)));
+	box.setPosition(vec3(character.getPosition().x/ (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.getPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.getPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
+	box.Rotate(vec3(character.GetRotation().x, character.GetRotation().y, character.GetRotation().z));
 
 	movementSpeed = 250.0f;
+
 
 	input.SetMouseCaptureMode(true);
 
@@ -53,6 +59,7 @@ void Game::InitGame()
 void Game::Update(TimeStep deltaTime)
 {
 
+	
 	if (input.GetInput(GLFW_KEY_D))
 	{
 		camera.SetPosition(camera.GetPosition() + glm::normalize(glm::cross(camera.GetFront(), camera.GetUp())) * movementSpeed * static_cast<float>(deltaTime));
@@ -78,14 +85,18 @@ void Game::Update(TimeStep deltaTime)
 	if (input.GetInput(GLFW_KEY_LEFT))
 	{
 		character.Rotate(vec3(0, 270 * deltaTime, 0));
+		box.Rotate(vec3(0, 270 * deltaTime, 0));
 	}
 	if (input.GetInput(GLFW_KEY_RIGHT))
 	{
 		character.Rotate(vec3(0, -270 * deltaTime, 0));
+		box.Rotate(vec3(0, -270 * deltaTime,0));
 	}
 	if (input.GetInput(GLFW_KEY_UP))
 	{
 		character.MoveForward2Axis(90 * deltaTime);
+		
+		
 	}
 	if (input.GetInput(GLFW_KEY_DOWN))
 	{
@@ -96,6 +107,7 @@ void Game::Update(TimeStep deltaTime)
 		CloseApplication();
 	}
 
+	box.setPosition(vec3(character.getPosition().x / (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.getPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.getPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
 	
 
 	camera.SetFront(input.GetDirection());
@@ -103,7 +115,11 @@ void Game::Update(TimeStep deltaTime)
 	
 	skybox.draw();
 	character.draw();
-
+	if (input.GetInput(GLFW_KEY_SPACE))
+	{
+		box.draw();
+	}
+	
 }
 
 void Game::DeInitGame()

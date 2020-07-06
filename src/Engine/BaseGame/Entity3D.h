@@ -31,7 +31,10 @@ namespace Engine3D
 		int layer;
 		vector<Entity3D> parent;
 		list<Entity3D> children;
+
 	public:
+		vec3 boundingBoxMin;
+		vec3 boundingBoxMax;
 		Shader shader;
 		Model model3D;
 		Entity3D();
@@ -47,7 +50,7 @@ namespace Engine3D
 		void SetTexture(int meshIndex, string type, string path);
 		void SetMaterial2(const char* path, GLuint type, bool flip, GLint FilteringOption);
 		void SetParent(Entity3D newParent);
-
+		
 	};
 }
 

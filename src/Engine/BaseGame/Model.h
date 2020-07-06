@@ -26,8 +26,7 @@ namespace Engine3D
 	class DLLEXPORT Model
 	{
 	private:
-		vec3 boundingBoxMin;
-		vec3 boundingBoxMax;
+
 		ModelsConfig config;
 		vector<Mesh> meshes;
 		vector<Texture> textures_loaded;
@@ -47,6 +46,8 @@ namespace Engine3D
 		void SetModel(string path, bool flipUVs, mat4 model, ModelsConfig config);
 		void Draw(mat4 model);
 		vector<Mesh> GetMeshes();
+		vec3 boundingBoxMin;
+		vec3 boundingBoxMax;
 	}; 
 }
 
