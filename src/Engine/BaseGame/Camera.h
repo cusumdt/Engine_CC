@@ -19,14 +19,12 @@ namespace Engine
 		vec3 up;
 	public:
 		Camera();
-		vec3 GetPosition();
-		vec3 GetFront();
-		vec3 GetUp();
-		mat4 GetProjection();
-		mat4 GetView();
-		void SetPosition(vec3 newPosition);
-		void SetRotation(vec3 newRotation);
-		void SetFront(vec3 newFront);
+		void SetPosition(vec3 _position);
+		void SetRotation(vec3 _rotation);
+		inline void SetFront(vec3 _front) { front = _front; }
+		inline vec3 GetPosition() { return position; }
+		inline vec3 GetFront() { return front; }
+		inline vec3 GetUp() { return up; }
 	};
 }
 
