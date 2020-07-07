@@ -8,8 +8,7 @@ Renderer BaseGame::_render;
 BaseGame::BaseGame()
 {
 	_windowWidth = 0;
-	_windowHeight = 0;
-	
+	_windowHeight = 0;	
 }
 
 void BaseGame::Init(int width, int height, string windowName)

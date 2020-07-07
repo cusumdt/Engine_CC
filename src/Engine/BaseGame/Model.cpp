@@ -1,11 +1,7 @@
 #include "Model.h"
 #include "BaseGame.h"
 
-
-
 using namespace Engine;
-
-
 
 void Model::SetModel(string path, bool flipUVs, mat4 model, ModelsConfig config)
 {
