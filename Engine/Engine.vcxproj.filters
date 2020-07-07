@@ -135,6 +135,9 @@
     <ClInclude Include="..\src\Engine\BaseGame\Importer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Engine\BaseGame\CustomVector.h">
+      <Filter>Archivos de encabezado\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Archivos de origen">
@@ -142,6 +145,12 @@
     </Filter>
     <Filter Include="Archivos de encabezado">
       <UniqueIdentifier>{70461cea-de59-47ce-96da-7a483a811632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Utils">
+      <UniqueIdentifier>{b774310f-b680-45ea-95f3-311ea52d5e86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Utils">
+      <UniqueIdentifier>{b95d7fc8-b0dc-40a6-b355-60e10f1c56e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

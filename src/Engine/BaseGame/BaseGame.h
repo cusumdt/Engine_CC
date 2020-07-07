@@ -14,7 +14,7 @@
 #include "Model.h"
 #include "Entity3D.h"
 #include "Light.h"
-
+#include "CustomVector.h"
 
 #define DLLEXPORT __declspec(dllexport)
 

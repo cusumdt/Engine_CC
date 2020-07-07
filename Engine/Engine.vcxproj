@@ -50,6 +50,7 @@
     <ClInclude Include="..\src\Engine\BaseGame\CollisionManager.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Color.h" />
     <ClInclude Include="..\src\Engine\BaseGame\ColorList.h" />
+    <ClInclude Include="..\src\Engine\BaseGame\CustomVector.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Entity.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Entity2D.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Entity3D.h" />

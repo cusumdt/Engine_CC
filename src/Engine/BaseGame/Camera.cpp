@@ -4,10 +4,10 @@
 using namespace Engine;
 
 Camera::Camera():
-	rotation(vec3(0, 0, 0)),
-	position(vec3(0, 0, 0)),
-	front(vec3(0, 0, -1)),
-	up(vec3(0, 1, 0))
+	rotation(VECTOR_ZERO),
+	position(VECTOR_ZERO),
+	front(VECTOR_BACKWARD),
+	up(VECTOR_UP)
 	{
 	}
 
