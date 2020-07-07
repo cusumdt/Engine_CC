@@ -18,9 +18,8 @@ namespace Engine
 		vec3 boundingBox3D[BOX_VERTEX];
 		Renderer* renderer;
 	public:
-		vec3 GetVertex(int _index);
 		void SetVertex(vec3 _boundingBox3D[BOX_VERTEX]);
-		bool loaded;
+		vec3 GetVertex(int _index);
 		BdB(Renderer* _renderer);
 	};
 }

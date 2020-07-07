@@ -8,13 +8,15 @@
 #include "Importer.h"
 #include "Material.h"
 #include "Shader.h"
-#include "BdB.h"
+//#include "BdB.h"
 #include <vector>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <list>
+
+#define BOX_VERTEX 8
 
 using namespace std;
 
