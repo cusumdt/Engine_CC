@@ -14,9 +14,7 @@ void BdB::SetVertex(vec3 _boundingBox3D[BOX_VERTEX])
 vec3 BdB::GetVertex(int _index)
 {
 	vec4 globalRotatedPos(boundingBox3D[_index].x, boundingBox3D[_index].y, boundingBox3D[_index].z, 1.0f);
-
 	globalRotatedPos = renderer->GetProjection() * globalRotatedPos;
-
 	return static_cast<vec3>(globalRotatedPos);
 }
 
