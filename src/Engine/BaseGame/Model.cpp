@@ -1,18 +1,11 @@
 #include "Model.h"
 #include "BaseGame.h"
-//#define STB_IMAGE_IMPLEMENTATION 
+
+
 
 using namespace Engine;
-using namespace Engine3D;
 
-Model::Model()
-{
-	/*vector<Vertex> vertices;
-	vector<unsigned int> indices;
-	vector<Texture> textures;
 
-	algo(vertices, indices, textures);*/
-}
 
 void Model::SetModel(string path, bool flipUVs, mat4 model, ModelsConfig config)
 {
@@ -21,13 +14,13 @@ void Model::SetModel(string path, bool flipUVs, mat4 model, ModelsConfig config)
 }
 vector<Mesh> Model::GetMeshes()
 {
-	return meshes;
+	return meshObjects;
 }
 void Model::loadModel(string path, bool flipUVs, mat4 model)
 {
 	boundingBoxMin = vec3(INT_MAX, INT_MAX, INT_MAX);
 	boundingBoxMax = vec3(INT_MIN, INT_MIN, INT_MIN);
-	// read file via ASSIMP
+	// Lee el archivo
 	Assimp::Importer importer;
 	const aiScene* scene;
 
@@ -56,9 +49,9 @@ void Model::loadModel(string path, bool flipUVs, mat4 model)
 	// Reordenar Layers (Capas de los nodos)
 	list<int> meshesLayers;
 
-	for (int i = 0; i < meshes.size(); i++)
+	for (int i = 0; i < meshObjects.size(); i++)
 	{
-		meshesLayers.push_back(meshes[i].layer);
+		meshesLayers.push_back(meshObjects[i].layer);
 	}
 
 	meshesLayers.sort();
@@ -71,11 +64,11 @@ void Model::loadModel(string path, bool flipUVs, mat4 model)
 	{
 		newValue = *it;
 
-		for (int j = 0; j < meshes.size(); j++)
+		for (int j = 0; j < meshObjects.size(); j++)
 		{
-			if (meshes[j].layer == newValue)
+			if (meshObjects[j].layer == newValue)
 			{
-				meshes[j].layer = newLayerValue;
+				meshObjects[j].layer = newLayerValue;
 			}
 		}
 
@@ -89,17 +82,17 @@ void Model::processNode(aiNode* node, const aiScene* scene)
 	// process each mesh located at the current node
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
 	{
-		// the node object only contains indices to index the actual objects in the scene. 
+		// the node object only contains indices to index the actual meshObjects in the scene. 
 		// the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-		meshes.push_back(processMesh(mesh, scene));
+		meshObjects.push_back(processMesh(mesh, scene));
 
 		//Entity3D newEntity;
 
 
 	}
 
-	// after we've processed all of the meshes (if any) we then recursively process each of the children nodes
+	// after we've processed all of the meshObjects (if any) we then recursively process each of the children nodes
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
 	{
 		currentLayer++;
@@ -213,19 +206,19 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 	// specular: texture_specularN
 	// normal: texture_normalN
 
-	// 1. diffuse maps
+	// 1. Diffuse maps
 	vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 	textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-	// 2. specular maps
+	// 2. Specular maps
 	vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 	textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-	// 3. normal maps
+	// 3. Normal maps
 	std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
 	textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
-	// 4. height maps
+	// 4. Height maps
 	std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 	textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-
+	// 5. Emmisive maps
 	std::vector<Texture> emissionMaps = loadMaterialTextures(material, aiTextureType_EMISSIVE, "texture_emission");
 	textures.insert(textures.end(), emissionMaps.begin(), emissionMaps.end());
 
@@ -355,8 +348,8 @@ void Model::Draw(mat4 model)
 	shader.setMat4("view", view);
 	shader.setMat4("projection", proj);
 
-	for (unsigned int i = 0; i < meshes.size(); i++)
-		meshes[i].Draw(shader, config);
+	for (unsigned int i = 0; i < meshObjects.size(); i++)
+		meshObjects[i].Draw(shader, config);
 
 	GenerateBoundingBox();
 
@@ -365,5 +358,5 @@ void Model::Draw(mat4 model)
 void Model::SetMeshTexture(int meshIndex, Texture newTexture)
 {
 	textures_loaded.push_back(newTexture);
-	meshes.at(meshIndex).textures.push_back(newTexture);
+	meshObjects.at(meshIndex).textures.push_back(newTexture);
 }

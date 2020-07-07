@@ -1,7 +1,7 @@
 #include "Light.h"
 #include "BaseGame.h"
 #include "Shader.h"
-using namespace Engine3D;
+using namespace Engine;
 
 Light::Light()
 {
@@ -17,9 +17,7 @@ Light::Light(int id)
 	ID = id;
 }
 
-Light::~Light()
-{
-}
+
 
 void Light::SetLight(bool isDir)
 {
@@ -57,17 +55,17 @@ void Light::SetLight(bool isDir)
 	
 }
 
-void Engine3D::Light::SetLightPos(vec3 pos)
+void Engine::Light::SetLightPos(vec3 pos)
 {
 	shader.setVec3("light.position", pos);
 }
 
-void Engine3D::Light::SetViewPos(vec3 viewPos)
+void Engine::Light::SetViewPos(vec3 viewPos)
 {
 	shader.setVec3("viewPos", viewPos);
 }
 
-void Engine3D::Light::SetLightColor(vec3 color)
+void Engine::Light::SetLightColor(vec3 color)
 {
 	lightColor = color;
 	glm::vec3 diffuseColor = lightColor * glm::vec3(0.65f); // decrease the influence
@@ -76,20 +74,20 @@ void Engine3D::Light::SetLightColor(vec3 color)
 	shader.setVec3("light.diffuse", diffuseColor);
 }
 
-void Engine3D::Light::SetAmbient(float influence)
+void Engine::Light::SetAmbient(float influence)
 {
 	glm::vec3 diffuseColor = lightColor * glm::vec3(0.65f); // decrease the influence
 	glm::vec3 ambientColor = diffuseColor * glm::vec3(influence); // low influence
 	shader.setVec3("light.ambient", ambientColor);
 }
 
-void Engine3D::Light::SetDiffuse(float influence)
+void Engine::Light::SetDiffuse(float influence)
 {
 	glm::vec3 diffuseColor = lightColor * glm::vec3(influence); // decrease the influence
 	shader.setVec3("light.diffuse", diffuseColor);
 }
 
-void Engine3D::Light::SetSpecular(vec3 specular)
+void Engine::Light::SetSpecular(vec3 specular)
 {
 	shader.setVec3("light.specular", specular);
 }

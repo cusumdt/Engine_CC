@@ -32,7 +32,6 @@ namespace Engine
 	public:
 		Entity();
 		Entity(Renderer renderer);
-		~Entity();
 		Entity(int newx, int newy, int newz);
 		Entity(float newx, float newy, float newz);
 		Entity(vec3 pos);

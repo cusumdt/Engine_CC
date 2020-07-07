@@ -12,12 +12,12 @@ bool CollisionManager::ScreenCollision(glm::vec2 entityPos, glm::vec4 pixels)
 	if (entityPos.x<pixels.x || entityPos.x > pixels.y || entityPos.y > pixels.z || entityPos.y < pixels.w)
 	{
 		_collided = true;
-		//cout << "Esta colisionando pantalla" << endl;
+		//cout << "Esta colisionando en pantalla" << endl;
 	}
 	else
 	{
 		_collided = false;
-		//cout << "NO esta colisionando pantalla" << endl;
+		//cout << "NO esta colisionando en pantalla" << endl;
 	}
 	return _collided;
 }
@@ -35,7 +35,7 @@ bool CollisionManager::CollisionDetection(glm::vec2 entityPos, glm::vec2 entityS
 	else
 	{
 		_collided = false;
-		//cout << "NONONO Colisiona" << endl;
+		//cout << "NO Colisiona" << endl;
 	}
 	return _collided;
 }

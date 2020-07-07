@@ -2,9 +2,7 @@
 
 using namespace Engine;
 
-Engine::Entity::~Entity()
-{
-}
+
 
 Entity::Entity()
 {

@@ -12,7 +12,7 @@
 
 using namespace Engine;
 
-namespace Engine3D
+namespace Engine
 {
 	class DLLEXPORT Entity3D : public Entity
 	{

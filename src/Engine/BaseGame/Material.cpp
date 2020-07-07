@@ -7,10 +7,7 @@ Material::Material()
 	texture = 0;
 }
 
-Material::~Material()
-{
 
-}
 
 void Material::SetTexture(const char* path, GLuint type, bool flip,GLint FilteringOption)
 {

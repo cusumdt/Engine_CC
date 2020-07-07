@@ -1,12 +1,8 @@
 #include "Mesh.h"
 #include "BaseGame.h"
 
-using namespace Engine;
-using namespace Engine3D;
 
-Mesh::Mesh()
-{
-}
+using namespace Engine;
 
 Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
 {
@@ -17,34 +13,26 @@ Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture
 	SetupMesh();
 }
 
-void Mesh::SetMesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
-{
-	/*this->vertices = vertices;
-	this->indices = indices;
-	this->textures = textures;
 
-	SetupMesh();*/
-}
 
 void Mesh::SetupMesh()
 {
-	// create buffers/arrays
+	// crea los buffers y arrays
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
 
 	glBindVertexArray(VAO);
-	// load data into vertex buffers
+	// carga la data de los vertex buffers
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// A great thing about structs is that their memory layout is sequential for all its items.
-	// The effect is that we can simply pass a pointer to the struct and it translates perfectly to a glm::vec3/2 array which
-	// again translates to 3/2 floats which translates to a byte array.
+	//El efecto es que simplemente podemos pasar un puntero a la estructura y se 
+	//traduce perfectamente en una matriz glm :: vec3 / 2 
 	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 
-	// set the vertex attribute pointers
+	// Setea los Vertex Atribbute Pointers
 	// vertex Positions
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
@@ -60,7 +48,7 @@ void Mesh::SetupMesh()
 
 void Mesh::Draw(Shader shader, ModelsConfig config)
 {
-	// bind appropriate textures
+	// enlaza la textura adecuada
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
 	unsigned int normalNr = 1;
@@ -68,8 +56,9 @@ void Mesh::Draw(Shader shader, ModelsConfig config)
 	unsigned int emissionNr = 1;
 	for (unsigned int i = 0; i < textures.size(); i++)
 	{
-		glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
-		// retrieve texture number (the N in diffuse_textureN)
+		glActiveTexture(GL_TEXTURE0 + i);
+		// activa la unidad de textura adecuada antes de la unión
+		// recupera el número de textura (la N en diffuse_textureN)
 		string number;
 		string name = textures[i].type;// shader.setInt("material.diffuse", 0);
 
@@ -92,17 +81,17 @@ void Mesh::Draw(Shader shader, ModelsConfig config)
 		}
 		else if (name == "texture_normal")
 		{
-			number = std::to_string(normalNr++); // transfer unsigned int to stream
-			//shader.setInt("material.emission", 5);
+			number = std::to_string(normalNr++); 
+			shader.setInt("material.normal", i);
 		}
 		else if (name == "texture_height")
 		{
-			number = std::to_string(heightNr++); // transfer unsigned int to stream
-			//shader.setInt("material.emission", 5);
+			number = std::to_string(heightNr++); 
+			shader.setInt("material.height", i);
 		}
 		else if (name == "texture_emission")
 		{
-			number = std::to_string(emissionNr++); // transfer unsigned int to stream
+			number = std::to_string(emissionNr++); 
 			shader.setInt("material.emission", i);
 		}
 
@@ -124,12 +113,12 @@ void Mesh::Draw(Shader shader, ModelsConfig config)
 
 	if (normalNr <= 1)
 	{
-		//shader.setInt("material.diffuse", -1);
+		shader.setInt("material.normal", 15);
 	}
 
 	if (heightNr <= 1)
 	{
-		//shader.setInt("material.diffuse", -1);
+		shader.setInt("material.height", 15);
 	}
 
 	if (emissionNr <= 1)
@@ -138,15 +127,15 @@ void Mesh::Draw(Shader shader, ModelsConfig config)
 	}
 
 
-	// set a default sininess value in case there is none
+	//En caso de que no haya un valor de brillo, establece uno.
 	glUniform1f(glGetUniformLocation(shader.ID, "material.shininess"), 16.0f);
 
-	// draw mesh
+	// Dibuja la mesh
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 
-	// always good practice to set everything back to defaults once configured.
+	// siempre es una buena práctica restablecer todo a los valores predeterminados una vez finalizada la configuración.
 	for (unsigned int i = 0; i < textures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);

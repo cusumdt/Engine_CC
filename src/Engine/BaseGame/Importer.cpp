@@ -1,5 +1,5 @@
 #include <Importer.h>
-using namespace Engine3D;
+using namespace Engine;
 
 bool Importer_Test::DoTheImportThing(const std::string& pFile)
 {

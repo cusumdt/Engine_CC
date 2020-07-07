@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace Engine3D
+namespace Engine
 {
 
 	enum class ModelsConfig
@@ -50,8 +50,7 @@ namespace Engine3D
 		vector<unsigned int> indices;
 		vector<Texture> textures;
 		Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures);
-		Mesh();
-		void SetMesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures);
+		Mesh() {};
 		void Draw(Shader shader, ModelsConfig config);
 	};
 }

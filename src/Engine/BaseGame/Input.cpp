@@ -15,9 +15,7 @@ Input::Input()
 	window = nullptr;
 }
 
-Input::~Input()
-{
-}
+
 
 void Input::setWindow(GLFWwindow* _window)
 {

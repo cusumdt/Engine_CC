@@ -1,7 +1,7 @@
 #include "Camera.h"
 #include "BaseGame.h"
 
-using namespace Engine3D;
+using namespace Engine;
 
 Camera::Camera()
 {

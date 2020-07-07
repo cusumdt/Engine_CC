@@ -12,7 +12,7 @@
 using namespace std;
 using namespace Engine;
 
-namespace Engine3D
+namespace Engine
 {
 	struct ShaderProgramSource
 	{
@@ -24,7 +24,7 @@ namespace Engine3D
 	public:
 		unsigned int ID;
 
-		Shader();
+		Shader() {};
 		Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr);
 		void use();
 		void setBool(const std::string& name, bool value) const;

@@ -19,7 +19,7 @@
 #define DLLEXPORT __declspec(dllexport)
 
 using namespace std;
-using namespace Engine3D;
+using namespace Engine;
 
 namespace Engine 
 {

@@ -5,7 +5,7 @@
 
 #include "Shader.h"
 
-namespace Engine3D
+namespace Engine
 {
 	class DLLEXPORT Light
 	{
@@ -18,7 +18,7 @@ namespace Engine3D
 		int ID;
 		Light();
 		Light(int id);
-		~Light();
+
 		void SetLight(bool isDir);
 		void SetLightPos(vec3 pos);
 		void SetViewPos(vec3 viewPos);

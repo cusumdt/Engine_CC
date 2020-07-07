@@ -12,7 +12,6 @@ namespace Engine
 		bool isKeyPressed[GLFW_KEY_LAST] = { false };
 	public:
 		Input();
-		~Input();
 		static bool firstMouseInput;
 		static vec2 lastMousePos;
 		static float yaw;

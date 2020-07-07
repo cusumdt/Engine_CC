@@ -1,6 +1,6 @@
 #include "Shader.h"
 
-using namespace Engine3D;
+using namespace Engine;
 
 enum ShaderType
 {
@@ -8,10 +8,7 @@ enum ShaderType
 	VERTEX = 0,
 	FRAGMENT = 1
 };
-Shader::Shader()
-{
 
-}
 
 ShaderProgramSource Shader::ShaderParser(const string& filepath)
 {
@@ -105,7 +102,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 	std::ifstream vShaderFile;
 	std::ifstream fShaderFile;
 	std::ifstream gShaderFile;
-	// ensure ifstream objects can throw exceptions:
+	// ensure ifstream meshObjects can throw exceptions:
 	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	gShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);

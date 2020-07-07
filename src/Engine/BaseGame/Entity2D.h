@@ -6,7 +6,7 @@
 #include "Material.h"
 #include "Shader.h"
 
-using namespace Engine3D;
+using namespace Engine;
 
 namespace Engine
 {

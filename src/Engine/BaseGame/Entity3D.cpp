@@ -2,7 +2,7 @@
 #include "BaseGame.h"
 #include "Shader.h"
 using namespace Engine;
-using namespace Engine3D;
+using namespace Engine;
 
 Entity3D::Entity3D()
 {
@@ -46,15 +46,15 @@ void Entity3D::set(string modelPath, Color color, ModelsConfig config, bool flip
 
 	model3D.SetModel(modelPath, flipUVs, model, config);
 
-	vector<Mesh> meshes = model3D.GetMeshes();
+	vector<Mesh> meshObjects = model3D.GetMeshes();
 	deque<Entity3D> entities;
 	deque<Entity3D> entities2;
 	deque<Entity3D> entities3;
 
-	for (int i = 0; i < meshes.size(); i++)
+	for (int i = 0; i < meshObjects.size(); i++)
 	{
 		Entity3D newChild;
-		newChild.layer = meshes[i].layer;
+		newChild.layer = meshObjects[i].layer;
 		entities.push_back(newChild);
 	}
 
@@ -99,7 +99,7 @@ void Entity3D::draw()
 	model3D.Draw(model);
 }
 
-GLuint Engine3D::Entity3D::GetShader()
+GLuint Engine::Entity3D::GetShader()
 {
 	return shader.ID;
 }

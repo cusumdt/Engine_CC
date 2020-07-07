@@ -8,7 +8,7 @@
 using namespace std;
 using namespace Engine;
 
-namespace Engine3D
+namespace Engine
 {
 	class DLLEXPORT Camera
 	{

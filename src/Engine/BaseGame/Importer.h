@@ -9,7 +9,7 @@
 
 using namespace std;
 
-namespace Engine3D
+namespace Engine
 {
 	class DLLEXPORT Importer_Test
 	{

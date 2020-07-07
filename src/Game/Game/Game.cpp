@@ -1,7 +1,7 @@
 #include "Game.h"
 
 using namespace Engine;
-using namespace Engine3D;
+using namespace Engine;
 
 Game::Game()
 {
