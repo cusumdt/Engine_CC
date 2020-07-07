@@ -46,9 +46,6 @@
     <ClCompile Include="..\src\Engine\BaseGame\Camera.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Engine\BaseGame\Importer.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Engine\BaseGame\Mesh.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
     <ClInclude Include="..\src\Engine\BaseGame\Sprite.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Engine\BaseGame\TimeStep.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\Triangle.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -112,9 +106,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\Camera.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Engine\BaseGame\Importer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\Mesh.h">
@@ -133,6 +124,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\BdB.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Engine\BaseGame\Time.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

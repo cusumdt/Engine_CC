@@ -8,9 +8,8 @@
 #include "ColorList.h"
 #include "Triangle.h"
 #include "Sprite.h"
-#include "TimeStep.h"
+#include "Time.h"
 #include "Camera.h"
-#include "Importer.h"
 #include "Model.h"
 #include "Entity3D.h"
 #include "Light.h"
@@ -23,7 +22,6 @@ using namespace Engine;
 
 namespace Engine 
 {
-
 	class DLLEXPORT BaseGame
 	{
 		private:
@@ -47,7 +45,7 @@ namespace Engine
 			void UpdateBackgroud();
 			void CloseApplication();
 			Renderer GetRenderer();
-			virtual void Update(TimeStep deltaTime) = 0;
+			virtual void Update(Time deltaTime) = 0;
 			virtual void DeInitGame() = 0;
 			static vector<Light> lights;
 	};

@@ -24,7 +24,7 @@ void BaseGame::GameLoop()
 	while (!WindowIsClosed())
 	{
 		float time = static_cast<float>(glfwGetTime());
-		TimeStep deltaTime = time - _lastFrameTime;
+		Time deltaTime = time - _lastFrameTime;
 		_lastFrameTime = time;
 
 		UpdateBackgroud();

@@ -29,7 +29,6 @@
     <ClCompile Include="..\src\Engine\BaseGame\Entity.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Entity2D.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Entity3D.cpp" />
-    <ClCompile Include="..\src\Engine\BaseGame\Importer.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Input.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Light.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Material.cpp" />
@@ -53,7 +52,6 @@
     <ClInclude Include="..\src\Engine\BaseGame\Entity.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Entity2D.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Entity3D.h" />
-    <ClInclude Include="..\src\Engine\BaseGame\Importer.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Input.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Light.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Material.h" />
@@ -62,7 +60,7 @@
     <ClInclude Include="..\src\Engine\BaseGame\Renderer.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Shader.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Sprite.h" />
-    <ClInclude Include="..\src\Engine\BaseGame\TimeStep.h" />
+    <ClInclude Include="..\src\Engine\BaseGame\Time.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Triangle.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Window.h" />
   </ItemGroup>

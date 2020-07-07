@@ -22,13 +22,8 @@ using glm::vec4;
 using glm::vec3;
 using glm::vec2;
 
-
-
 namespace Engine
 {
-
-	
-
 	class DLLEXPORT Renderer
 	{
 		private:

@@ -28,7 +28,7 @@ namespace Engine
 		Game();
 		~Game();
 		void InitGame();
-		void Update(TimeStep deltaTime);
+		void Update(Time deltaTime);
 		void DeInitGame();
 
 	};
