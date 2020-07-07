@@ -17,6 +17,8 @@ namespace Engine
 		vec3 rotation;
 		vec3 front;
 		vec3 up;
+	private:
+		void CameraLookAt(vec3 _position, vec3 _rotation, vec3 _up);
 	public:
 		Camera();
 		void SetPosition(vec3 _position);
