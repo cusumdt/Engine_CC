@@ -41,16 +41,18 @@ namespace Engine
 			void SetBackgroundColors(Color backgroundColor);
 			void ChangeBackgroundColor();
 
-			mat4 GetView();
-			GLuint GetUniView();
-			void SetUniView(GLuint _uniview);
-			mat4 GetProjection();
-			GLuint GetUniProj();
-			void SetUniProj(GLuint _uniproj);
 			void SetProjection();
-			void SetView(mat4 newView);
-			void SetPosition(vec3 newPosition);
-			void Draw(unsigned int shader, unsigned int texture1, unsigned int texture2, unsigned int VertexArrayID, mat4 model, GLuint uniModel);
+			void SetPosition(vec3 _position);
+			inline void SetUniView(GLuint _uniview) {uniView = _uniview;}
+			inline void SetUniProj(GLuint _uniproj) { uniProj = _uniproj;}
+			inline void SetView(mat4 _view) { view = _view; }
+
+			inline mat4 GetProjection() {return proj;}
+			inline GLuint GetUniView() { return uniView; }
+			inline GLuint GetUniProj() { return uniProj; }
+			inline mat4 GetView() { return view; }
+
+			void Draw(unsigned int _shader, unsigned int _texture1, unsigned int _texture2, unsigned int _VertexArrayID, mat4 _model, GLuint _uniModel);
 	};
 }
 
