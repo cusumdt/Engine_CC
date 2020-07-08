@@ -10,12 +10,17 @@ namespace Engine
 	class DLLEXPORT Light
 	{
 	private:
+		float ambientStandard;
+		float diffuseStandard;
+		vec3 specularStandard;
 	public:
 		Shader shader;
 		glm::vec3 pos;
 		glm::vec3 lightColor;
 		bool exists;
 		int ID;
+
+	public:
 		Light();
 		Light(int id);
 

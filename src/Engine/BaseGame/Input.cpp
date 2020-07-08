@@ -11,8 +11,9 @@ vec2 Input::lastMousePos = vec2(0, 0);
 vec3 Input::mouseDirection = vec3(0, 0, 0);
 
 Input::Input()
+	:
+	window(nullptr)
 {
-	window = nullptr;
 }
 
 void Input::setWindow(GLFWwindow* _window)
