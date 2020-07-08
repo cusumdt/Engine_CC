@@ -13,7 +13,6 @@ namespace Engine
 		unsigned int texture;
 	public:
 		Material();
-		~Material() {};
 		void SetTexture(const char* path, GLuint type, bool flip,GLint FilteringOption);
 		inline unsigned int GetTexture(){ return texture; }
 	};
