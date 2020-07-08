@@ -12,17 +12,17 @@ Triangle::Triangle()
 	//shader = 0;
 }
 
-Triangle::Triangle(int newx, int newy)
+Triangle::Triangle(int _x, int _y)
 {
-	moveTo(static_cast<float>(newx), static_cast<float>(newy),0);
+	MoveTo(static_cast<float>(_x), static_cast<float>(_y),0);
 	VertexArrayID = 0;
 	VertexBuffer = 0;
 	//shader = 0;
 }
 
-Triangle::Triangle(float newx, float newy)
+Triangle::Triangle(float _x, float _y)
 {
-	moveTo(newx, newy,0);
+	MoveTo(_x, _y,0);
 	VertexArrayID = 0;
 	VertexBuffer = 0;
 	//shader = 0;

@@ -2,7 +2,6 @@
 
 #pragma warning(disable:4251)
 
-
 #ifndef ENTITY_H
 #define ENTITY_H
 #define DLLEXPORT __declspec(dllexport)
@@ -10,6 +9,7 @@
 #include "Renderer.h"
 #include "Window.h"
 #include "CollisionManager.h"
+#include "CustomVector.h"
 
 namespace Engine
 {
@@ -28,28 +28,31 @@ namespace Engine
 		
 		mat4 modelOriginal;
 		bool is3D = false;
-		
 	public:
 		Entity();
 		Entity(Renderer renderer);
-		Entity(int newx, int newy, int newz);
-		Entity(float newx, float newy, float newz);
-		Entity(vec3 pos);
-		void setPosition(vec3 pos);
-		vec3 getPosition();
-		float getX();
-		float getY();
-		float getZ();
-		void setX(float newx);
-		void setY(float newy);
-		void setZ(float newz);
-		void moveTo(float newx, float newy, float newz);
-		virtual void set();
-		virtual void draw();
-		void endDraw();
-		void Rotate(vec3 newRotation);
-		void Scale(vec3 newScale);
-		vec3 GetScale();
+		Entity(int _x, int _y, int _z);
+		Entity(float _x, float _y, float _z);
+		Entity(vec3 _pos);
+
+		virtual void Set(){};
+		virtual void Draw(){};
+		void EndDraw();
+
+		void MoveTo(float _x, float _y, float _z);
+		void Rotate(vec3 _rotation);
+		void Scale(vec3 _scale);
+
+		inline vec3 GetScale() { return scale; }
+		inline vec3 GetPosition() { return position; }
+		inline float GetX() { return position.x; }
+		inline float GetY() { return position.y; }
+		inline float GetZ(){ return position.z; }
+		inline void SetX(float _x) { position.x = _x; }
+		inline void SetY(float _y){ position.y = _y; }
+		inline void SetZ(float _z){ position.z = _z; }
+		void SetPosition(vec3 _pos);
+
 		Renderer currentRenderer;
 		CollisionManager colMan;
 		mat4 model;

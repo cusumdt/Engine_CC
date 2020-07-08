@@ -11,8 +11,8 @@ namespace Engine
 	private:
 	public:
 		Triangle();
-		Triangle(int newx, int newy);
-		Triangle(float newx, float newy);
+		Triangle(int _x, int _y);
+		Triangle(float _x, float _y);
 		Triangle(vec2 v);
 		void set(Renderer renderer, Color triangleColor);
 		void draw();

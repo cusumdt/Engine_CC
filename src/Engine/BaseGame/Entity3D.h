@@ -45,8 +45,8 @@ namespace Engine
 		vec3 GetRight();
 		vec3 GetRotation();
 		void MoveForward2Axis(float speed);
-		void set(string modelPath , Color color, ModelsConfig config, bool flipUVs, Light light);
-		void draw();
+		void Set(string modelPath , Color color, ModelsConfig config, bool flipUVs, Light light);
+		void Draw();
 		void SetTexture(int meshIndex, string type, string path);
 		void SetMaterial2(const char* path, GLuint type, bool flip, GLint FilteringOption);
 		void SetParent(Entity3D newParent);

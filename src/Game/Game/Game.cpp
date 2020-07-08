@@ -22,7 +22,7 @@ void Game::InitGame()
 	Init(1024,720, "Engine");
 
 	background.set(Colors.White, vec3(1024.0f, 720.0f, 1.0f));
-	background.setPosition(vec3(900, -10, 0)); // 512 360
+	background.SetPosition(vec3(900, -10, 0)); // 512 360
 	background.Rotate(vec3(0, 270, 0));
 
 	//Configuracion de Luces
@@ -30,22 +30,22 @@ void Game::InitGame()
 	light.SetLightPos(vec3(10.f, -5.0f, 0.f));
 
 	// Configuracion de Skybox
-	skybox.set("res/model/skybox/Skybox.fbx", Colors.White, ModelsConfig::A, false, light);
+	skybox.Set("res/model/skybox/Skybox.fbx", Colors.White, ModelsConfig::A, false, light);
 	skybox.Scale(vec3(3, 3, 3));
-	skybox.setPosition(vec3(180, -0.3f, 0));
+	skybox.SetPosition(vec3(180, -0.3f, 0));
 	skybox.SetTexture(0, "texture_diffuse", "res/textures/models/skybox/Sky.jpg");
 
 	// Configuracion de Personaje
-	character.set("res/model/character/robosurfer2.obj", Colors.White, ModelsConfig::A, false,light);
+	character.Set("res/model/character/robosurfer2.obj", Colors.White, ModelsConfig::A, false,light);
 	character.Scale(vec3(1, 1, 1));
-	character.setPosition(vec3(10,0,0));
+	character.SetPosition(vec3(10,0,0));
 	character.Rotate(vec3(0, 0, 0));
 
 	// Configuracion de BoundingBox Visual Temporal
-	box.set("res/model/box.fbx", Colors.White, ModelsConfig::A, false, light);
+	box.Set("res/model/box.fbx", Colors.White, ModelsConfig::A, false, light);
 	box.SetTexture(0, "texture_diffuse", "res/model/color.jpg");
 	box.Scale(vec3(character.boundingBoxMax.x + (character.boundingBoxMin.x * -1) , character.boundingBoxMax.y + (character.boundingBoxMin.y * -1), character.boundingBoxMax.z + (character.boundingBoxMin.z * -1)));
-	box.setPosition(vec3(character.getPosition().x/ (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.getPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.getPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
+	box.SetPosition(vec3(character.GetPosition().x/ (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.GetPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.GetPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
 	box.Rotate(vec3(character.GetRotation().x, character.GetRotation().y, character.GetRotation().z));
 
 	movementSpeed = 250.0f;
@@ -100,17 +100,17 @@ void Game::Update(Time deltaTime)
 		CloseApplication();
 	}
 
-	box.setPosition(vec3(character.getPosition().x / (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.getPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.getPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
+	box.SetPosition(vec3(character.GetPosition().x / (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.GetPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.GetPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
 	
 
 	camera.SetFront(input.GetDirection());
 	camera.SetPosition(camera.GetPosition());
 	
-	skybox.draw();
-	character.draw();
+	skybox.Draw();
+	character.Draw();
 	if (input.GetInput(GLFW_KEY_SPACE))
 	{
-		box.draw();
+		box.Draw();
 	}
 	
 }

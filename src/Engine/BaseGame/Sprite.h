@@ -19,8 +19,8 @@ namespace Engine
 		vec2 spriteVertexes[4] = { vec2(0,0) }; // Quad
 	public:
 		Sprite();
-		Sprite(int newx, int newy);
-		Sprite(float newx, float newy);
+		Sprite(int _x, int _y);
+		Sprite(float _x, float _y);
 		Sprite(vec2 v);
 		void set(Color spriteColor, vec3 _scale);
 		void SetAnimation(vec2 imageCount, float switchTime, vec2 startingFrame);
