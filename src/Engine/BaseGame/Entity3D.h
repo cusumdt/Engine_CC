@@ -26,7 +26,7 @@ namespace Engine
 		vec3 front;
 		vec3 up;
 		vec3 right;
-		ModelsConfig config;
+		SpecularMode config;
 		int layer;
 		vector<Entity3D> parent;
 		list<Entity3D> children;
@@ -42,7 +42,7 @@ namespace Engine
 		void MoveForward2Axis(float speed);
 		void Draw();
 
-		void Set(string modelPath , Color color, ModelsConfig config, bool flipUVs, Light light);
+		void Set(string modelPath , Color color, SpecularMode config, bool flipUVs, Light light);
 		void SetTexture(int meshIndex, string type, string path);
 		void SetMaterial(const char* path, GLuint type, bool flip, GLint FilteringOption);
 		void SetParent(Entity3D newParent);

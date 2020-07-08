@@ -3,7 +3,7 @@
 
 using namespace Engine;
 
-void Model::SetModel(string path, bool flipUVs, mat4 model, ModelsConfig config)
+void Model::SetModel(string path, bool flipUVs, mat4 model, SpecularMode config)
 {
 	this->config = config;
 	loadModel(path, flipUVs, model);

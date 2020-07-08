@@ -30,7 +30,7 @@ namespace Engine
 	{
 	private:
 
-		ModelsConfig config;
+		SpecularMode config;
 		vector<Mesh> meshObjects;
 		vector<Texture> textures_loaded;
 		string directory;
@@ -46,7 +46,7 @@ namespace Engine
 		int currentLayer;
 		Shader shader;
 		void SetMeshTexture(int meshIndex, Texture newTexture);
-		void SetModel(string path, bool flipUVs, mat4 model, ModelsConfig config);
+		void SetModel(string path, bool flipUVs, mat4 model, SpecularMode config);
 		void Draw(mat4 model);
 		vector<Mesh> GetMeshes();
 		vec3 boundingBoxMin;

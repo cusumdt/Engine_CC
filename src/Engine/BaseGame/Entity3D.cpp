@@ -8,7 +8,7 @@ Entity3D::Entity3D()
 	:
 	boundingBoxMin(0),
 	boundingBoxMax(0),
-	config(ModelsConfig::A),
+	config(SpecularMode::ZERO),
 	layer(0),
 	red(0),
 	green(0),
@@ -35,7 +35,7 @@ void Entity3D::Draw()
 	model3D.Draw(model);
 }
 
-void Entity3D::Set(string modelPath, Color color, ModelsConfig config, bool flipUVs, Light light)
+void Entity3D::Set(string modelPath, Color color, SpecularMode config, bool flipUVs, Light light)
 {
 	this->config = config;
 	if (light.exists)

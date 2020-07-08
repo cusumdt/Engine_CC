@@ -4,16 +4,14 @@
 
 using namespace Engine;
 
-Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
+Mesh::Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures)
 {
-	this->vertices = vertices;
-	this->indices = indices;
-	this->textures = textures;
+	vertices = _vertices;
+	indices = _indices;
+	textures = _textures;
 
 	SetupMesh();
 }
-
-
 
 void Mesh::SetupMesh()
 {
@@ -46,7 +44,7 @@ void Mesh::SetupMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::Draw(Shader shader, ModelsConfig config)
+void Mesh::Draw(Shader shader, SpecularMode config)
 {
 	// enlaza la textura adecuada
 	unsigned int diffuseNr = 1;
@@ -70,28 +68,28 @@ void Mesh::Draw(Shader shader, ModelsConfig config)
 		else if (name == "texture_specular")
 		{
 			number = std::to_string(specularNr++); // transfer unsigned int to stream
-			if (config == ModelsConfig::A)
+			if (config == SpecularMode::ZERO)
 			{
 				shader.setInt("material.specular", 1);
 			}
-			else if (config == ModelsConfig::B)
+			else if (config == SpecularMode::ONE)
 			{
 				shader.setInt("material.specular", 0);
 			}
 		}
 		else if (name == "texture_normal")
 		{
-			number = std::to_string(normalNr++); 
+			number = std::to_string(normalNr++);
 			shader.setInt("material.normal", i);
 		}
 		else if (name == "texture_height")
 		{
-			number = std::to_string(heightNr++); 
+			number = std::to_string(heightNr++);
 			shader.setInt("material.height", i);
 		}
 		else if (name == "texture_emission")
 		{
-			number = std::to_string(emissionNr++); 
+			number = std::to_string(emissionNr++);
 			shader.setInt("material.emission", i);
 		}
 
@@ -125,7 +123,6 @@ void Mesh::Draw(Shader shader, ModelsConfig config)
 	{
 		shader.setInt("material.emission", 15);
 	}
-
 
 	//En caso de que no haya un valor de brillo, establece uno.
 	glUniform1f(glGetUniformLocation(shader.ID, "material.shininess"), 16.0f);

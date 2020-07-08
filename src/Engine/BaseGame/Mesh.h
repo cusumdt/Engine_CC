@@ -12,11 +12,10 @@ using namespace std;
 
 namespace Engine
 {
-	enum class ModelsConfig
+	enum class SpecularMode
 	{
-		A,
-		B,
-		maxConfigs
+		ZERO,
+		ONE
 	};
 
 	struct Vertex
@@ -40,16 +39,18 @@ namespace Engine
 	private:
 		unsigned int VBO;
 		unsigned int EBO;
-		void SetupMesh();
 	public:
 		int layer;
 		unsigned int VAO;
-		vector<Vertex> vertices;
 		vector<unsigned int> indices;
+		vector<Vertex> vertices;
 		vector<Texture> textures;
-		Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures);
+	private:
+		void SetupMesh();
+	public:
 		Mesh() {};
-		void Draw(Shader shader, ModelsConfig config);
+		Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures);
+		void Draw(Shader shader, SpecularMode config);
 	};
 }
 
