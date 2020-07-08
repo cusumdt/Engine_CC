@@ -112,11 +112,11 @@ void Entity::SetPosition(vec3 _pos)
 	if (_3D)
 	{
 		
-		mat4 model = modelOriginal;
-		model = glm::scale(modelOriginal, scale);
+		mat4 _model = modelOriginal;
+		_model = glm::scale(modelOriginal, scale);
 
 		cout << "Rotation: " << rotation.x << " " << rotation.y << " " << rotation.z << endl;
-		model = glm::translate(model, _pos);
+		model = glm::translate(_model, _pos);
 		model = glm::rotate(model, glm::radians(rotation.x), vec3(1.0f, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(rotation.y), vec3(0.0f, 1.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(rotation.z), vec3(0.0f, 0.0f, 1.0f));

@@ -27,7 +27,6 @@ Entity3D::~Entity3D()
 
 void Entity3D::MoveForward2Axis(float speed)
 {
-	cout << "holaaaaaaaaaaaaaaaaaaaa" << endl;
 	SetPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
 }
 void Entity3D::Draw(bool wireframeActive)
