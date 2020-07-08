@@ -27,7 +27,7 @@ namespace Engine
 		GLint texAttrib;
 		
 		mat4 modelOriginal;
-		bool is3D = false;
+		bool _3D = false;
 	public:
 		Entity();
 		Entity(Renderer renderer);

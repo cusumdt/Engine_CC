@@ -12,7 +12,6 @@ using namespace std;
 
 namespace Engine
 {
-
 	enum class ModelsConfig
 	{
 		A,
@@ -22,7 +21,6 @@ namespace Engine
 
 	struct Vertex
 	{
-	
 		vec3 Position;
 		vec3 Normal;
 		vec2 TexCoords;

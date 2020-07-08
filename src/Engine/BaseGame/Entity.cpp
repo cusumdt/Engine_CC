@@ -109,7 +109,7 @@ void Entity::Rotate(vec3 _rotation)
 
 void Entity::SetPosition(vec3 _pos)
 {
-	if (is3D)
+	if (_3D)
 	{
 		mat4 oldModel = modelOriginal;
 		oldModel = glm::scale(modelOriginal, scale);

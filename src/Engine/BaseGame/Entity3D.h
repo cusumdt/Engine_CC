@@ -17,7 +17,6 @@ namespace Engine
 	class DLLEXPORT Entity3D : public Entity
 	{
 	protected:
-		
 		Material texture1;
 		Material texture2;
 		float red;
@@ -31,26 +30,28 @@ namespace Engine
 		int layer;
 		vector<Entity3D> parent;
 		list<Entity3D> children;
-
 	public:
 		vec3 boundingBoxMin;
 		vec3 boundingBoxMax;
 		Shader shader;
 		Model model3D;
+	public:
 		Entity3D();
 		~Entity3D();
-		GLuint GetShader();
-		vec3 GetFront();
-		vec3 GetUp();
-		vec3 GetRight();
-		vec3 GetRotation();
+
 		void MoveForward2Axis(float speed);
-		void Set(string modelPath , Color color, ModelsConfig config, bool flipUVs, Light light);
 		void Draw();
+
+		void Set(string modelPath , Color color, ModelsConfig config, bool flipUVs, Light light);
 		void SetTexture(int meshIndex, string type, string path);
-		void SetMaterial2(const char* path, GLuint type, bool flip, GLint FilteringOption);
+		void SetMaterial(const char* path, GLuint type, bool flip, GLint FilteringOption);
 		void SetParent(Entity3D newParent);
-		
+
+		inline GLuint GetShader(){return shader.ID;}
+		inline vec3 GetFront() { return front; }
+		inline vec3 GetUp() { return up; }
+		inline vec3 GetRight() { return right; }
+		inline vec3 GetRotation() { return rotation; }
 	};
 }
 

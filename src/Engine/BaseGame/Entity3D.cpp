@@ -5,25 +5,34 @@ using namespace Engine;
 using namespace Engine;
 
 Entity3D::Entity3D()
+	:
+	boundingBoxMin(0),
+	boundingBoxMax(0),
+	config(ModelsConfig::A),
+	layer(0),
+	red(0),
+	green(0),
+	blue(0),
+	alpha(0),
+	front(VECTOR_FRONT),
+	up(VECTOR_UP),
+	right(VECTOR_LEFT)
 {
-	VertexArrayID = 0;
-	VertexBuffer = 0;
-	position.x = 0;
-	position.y = 0;
-	position.z = 0;
-	red = 0;
-	green = 0;
-	blue = 0;
-	alpha = 0;
-	front = vec3(0, 0, 1);
-	up = vec3(0, 1, 0);
-	right = vec3(-1, 0, 0);
-	is3D = true;
+	_3D = true;
 }
 
 Entity3D::~Entity3D()
 {
 	Shader::DeleteShader(shader.ID);
+}
+
+void Entity3D::MoveForward2Axis(float speed)
+{
+	SetPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
+}
+void Entity3D::Draw()
+{
+	model3D.Draw(model);
 }
 
 void Entity3D::Set(string modelPath, Color color, ModelsConfig config, bool flipUVs, Light light)
@@ -40,9 +49,6 @@ void Entity3D::Set(string modelPath, Color color, ModelsConfig config, bool flip
 		shader.ID = Shader::CreateShader(source.vertexSource, source.fragmentSource);
 		model3D.shader = shader;
 	}
-
-	
-	
 
 	model3D.SetModel(modelPath, flipUVs, model, config);
 
@@ -90,45 +96,6 @@ void Entity3D::SetParent(Entity3D newParent)
 {
 	parent.push_back(newParent);
 }
-
-
-void Entity3D::Draw()
-{
-	model;
-
-	model3D.Draw(model);
-}
-
-GLuint Engine::Entity3D::GetShader()
-{
-	return shader.ID;
-}
-
-vec3 Entity3D::GetFront()
-{
-	return front;
-}
-
-vec3 Entity3D::GetUp()
-{
-	return up;
-}
-
-vec3 Entity3D::GetRight()
-{
-	return front;
-}
-
-vec3 Entity3D::GetRotation()
-{
-	return rotation;
-}
-
-void Entity3D::MoveForward2Axis(float speed)
-{
-	SetPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
-}
-
 void Entity3D::SetTexture(int meshIndex, string type, string path)
 {
 	Texture newTexture;
@@ -138,8 +105,10 @@ void Entity3D::SetTexture(int meshIndex, string type, string path)
 
 	model3D.SetMeshTexture(meshIndex, newTexture);
 }
-
-void Entity3D::SetMaterial2(const char* path, GLuint type, bool flip, GLint FilteringOption)
+void Entity3D::SetMaterial(const char* path, GLuint type, bool flip, GLint FilteringOption)
 {
 	texture2.SetTexture(path, type, flip, FilteringOption);
 }
+
+
+
