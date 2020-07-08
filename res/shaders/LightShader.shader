@@ -80,7 +80,6 @@ void main()
 	vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;
 
 	// emission
-	//vec3 emission = texture(material.emission, TexCoords).rgb;
 	vec3 emission = vec3(texture(material.emission, TexCoords));
 
 	vec3 result = ambient + diffuse + specular + emission;

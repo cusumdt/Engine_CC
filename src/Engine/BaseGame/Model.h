@@ -28,7 +28,6 @@ namespace Engine
 	class DLLEXPORT Model
 	{
 	private:
-		SpecularMode config;
 		vector<Mesh> meshObjects;
 		vector<Texture> textures_loaded;
 		string directory;
@@ -47,9 +46,9 @@ namespace Engine
 		vec3 boundingBoxMax;
 
 	public:
-		Model():boundingBoxMax(0),boundingBoxMin(0),config(SpecularMode::ONE),currentLayer(0){};
+		Model():boundingBoxMax(0),boundingBoxMin(0),currentLayer(0){};
 		void SetMeshTexture(int _meshIndex, Texture _texture);
-		void SetModel(string _path, bool _flipUVs, mat4 _model, SpecularMode _config);
+		void SetModel(string _path, bool _flipUVs, mat4 _model);
 		inline vector<Mesh> GetMeshes() {return meshObjects;}
 		void Draw(mat4 _model);
 		

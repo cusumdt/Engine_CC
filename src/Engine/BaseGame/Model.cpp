@@ -6,24 +6,15 @@ using namespace Engine;
 
 unsigned int TextureFromFile(string _path, bool _gamma)
 {
-
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
 
 	int width, height, nrComponents;
-	unsigned char* data = stbi_load(_path.c_str(), &width, &height, &nrComponents, 0);
+	unsigned char* data = stbi_load(_path.c_str(), &width, &height, &nrComponents, STBI_rgb_alpha);
 	if (data)
 	{
-		GLenum format;
-		if (nrComponents == 1)
-			format = GL_RED;
-		else if (nrComponents == 3)
-			format = GL_RGB;
-		else if (nrComponents == 4)
-			format = GL_RGBA;
-
 		glBindTexture(GL_TEXTURE_2D, textureID);
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -51,19 +42,11 @@ unsigned int TextureFromFile(const char* _path, const string& _directory, bool _
 	glGenTextures(1, &textureID);
 
 	int width, height, nrComponents;
-	unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
+	unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, STBI_rgb_alpha);
 	if (data)
 	{
-		GLenum format;
-		if (nrComponents == 1)
-			format = GL_RED;
-		else if (nrComponents == 3)
-			format = GL_RGB;
-		else if (nrComponents == 4)
-			format = GL_RGBA;
-
 		glBindTexture(GL_TEXTURE_2D, textureID);
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -323,9 +306,8 @@ void Model::SetMeshTexture(int _meshIndex, Texture _texture)
 	meshObjects.at(_meshIndex).textures.push_back(_texture);
 }
 
-void Model::SetModel(string _path, bool _flipUVs, mat4 _model, SpecularMode _config)
+void Model::SetModel(string _path, bool _flipUVs, mat4 _model)
 {
-	config = _config;
 	loadModel(_path, _flipUVs, _model);
 }
 
@@ -342,7 +324,7 @@ void Model::Draw(mat4 _model)
 	shader.setMat4("projection", proj);
 
 	for (unsigned int i = 0; i < meshObjects.size(); i++)
-		meshObjects[i].Draw(shader, config);
+		meshObjects[i].Draw(shader);
 
 	GenerateBoundingBox();
 

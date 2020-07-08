@@ -8,16 +8,12 @@
 #include <vector>
 #include <string>
 
+#define LIMIT_TEXTURE 8
+
 using namespace std;
 
 namespace Engine
 {
-	enum class SpecularMode
-	{
-		ZERO,
-		ONE
-	};
-
 	struct Vertex
 	{
 		vec3 Position;
@@ -50,7 +46,7 @@ namespace Engine
 	public:
 		Mesh() {};
 		Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures);
-		void Draw(Shader shader, SpecularMode config);
+		void Draw(Shader shader);
 	};
 }
 

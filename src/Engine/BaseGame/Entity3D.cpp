@@ -8,7 +8,6 @@ Entity3D::Entity3D()
 	:
 	boundingBoxMin(0),
 	boundingBoxMax(0),
-	config(SpecularMode::ZERO),
 	layer(0),
 	red(0),
 	green(0),
@@ -30,14 +29,19 @@ void Entity3D::MoveForward2Axis(float speed)
 {
 	SetPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
 }
-void Entity3D::Draw()
+void Entity3D::Draw(bool wireframeActive)
 {
+	if (wireframeActive) {
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		model3D.Draw(model);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+	else
 	model3D.Draw(model);
 }
 
-void Entity3D::Set(string modelPath, Color color, SpecularMode config, bool flipUVs, Light light)
+void Entity3D::Set(string modelPath, Color color, bool flipUVs, Light light)
 {
-	this->config = config;
 	if (light.exists)
 	{
 		shader=light.shader;
@@ -50,7 +54,7 @@ void Entity3D::Set(string modelPath, Color color, SpecularMode config, bool flip
 		model3D.shader = shader;
 	}
 
-	model3D.SetModel(modelPath, flipUVs, model, config);
+	model3D.SetModel(modelPath, flipUVs, model);
 
 	vector<Mesh> meshObjects = model3D.GetMeshes();
 	deque<Entity3D> entities;

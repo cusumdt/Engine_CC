@@ -30,19 +30,19 @@ void Game::InitGame()
 	light.SetLightPos(vec3(10.f, -5.0f, 0.f));
 
 	// Configuracion de Skybox
-	skybox.Set("res/model/skybox/Skybox.fbx", Colors.White, SpecularMode::ZERO, false, light);
+	skybox.Set("res/model/skybox/Skybox.fbx", Colors.White, false, light);
 	skybox.Scale(vec3(3, 3, 3));
 	skybox.SetPosition(vec3(180, -0.3f, 0));
 	skybox.SetTexture(0, "texture_diffuse", "res/textures/models/skybox/Sky.jpg");
 
 	// Configuracion de Personaje
-	character.Set("res/model/character/robosurfer2.obj", Colors.White, SpecularMode::ZERO, false,light);
+	character.Set("res/model/character/robosurfer2.obj", Colors.White, false,light);
 	character.Scale(vec3(1, 1, 1));
 	character.SetPosition(vec3(10,0,0));
 	character.Rotate(vec3(0, 0, 0));
 
 	// Configuracion de BoundingBox Visual Temporal
-	box.Set("res/model/box.fbx", Colors.White, SpecularMode::ZERO, false, light);
+	box.Set("res/model/box.fbx", Colors.White, false, light);
 	box.SetTexture(0, "texture_diffuse", "res/model/color.jpg");
 	box.Scale(vec3(character.boundingBoxMax.x + (character.boundingBoxMin.x * -1) , character.boundingBoxMax.y + (character.boundingBoxMin.y * -1), character.boundingBoxMax.z + (character.boundingBoxMin.z * -1)));
 	box.SetPosition(vec3(character.GetPosition().x/ (character.boundingBoxMax.x + (character.boundingBoxMin.x * -1)), character.GetPosition().y / (character.boundingBoxMax.y + (character.boundingBoxMin.y * -1)), character.GetPosition().z / (character.boundingBoxMax.z + (character.boundingBoxMin.z * -1))));
@@ -106,11 +106,11 @@ void Game::Update(Time deltaTime)
 	camera.SetFront(input.GetDirection());
 	camera.SetPosition(camera.GetPosition());
 	
-	skybox.Draw();
-	character.Draw();
+	skybox.Draw(false);
+	character.Draw(false);
 	if (input.GetKey(GLFW_KEY_SPACE))
 	{
-		box.Draw();
+		box.Draw(true);
 	}
 	
 }

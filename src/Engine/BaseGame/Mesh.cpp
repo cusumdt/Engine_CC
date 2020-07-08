@@ -44,7 +44,7 @@ void Mesh::SetupMesh()
 	glBindVertexArray(0);
 }
 
-void Mesh::Draw(Shader shader, SpecularMode config)
+void Mesh::Draw(Shader shader)
 {
 	// enlaza la textura adecuada
 	unsigned int diffuseNr = 1;
@@ -68,14 +68,7 @@ void Mesh::Draw(Shader shader, SpecularMode config)
 		else if (name == "texture_specular")
 		{
 			number = std::to_string(specularNr++); // transfer unsigned int to stream
-			if (config == SpecularMode::ZERO)
-			{
-				shader.setInt("material.specular", 1);
-			}
-			else if (config == SpecularMode::ONE)
-			{
-				shader.setInt("material.specular", 0);
-			}
+			shader.setInt("material.specular", i);
 		}
 		else if (name == "texture_normal")
 		{
@@ -100,29 +93,19 @@ void Mesh::Draw(Shader shader, SpecularMode config)
 	}
 
 	if (diffuseNr <= 1)
-	{
-		shader.setInt("material.diffuse", 15);
-	}
-
+		shader.setInt("material.diffuse", LIMIT_TEXTURE);
+	
 	if (specularNr <= 1)
-	{
-		shader.setInt("material.specular", 15);
-	}
+		shader.setInt("material.specular", LIMIT_TEXTURE);
 
 	if (normalNr <= 1)
-	{
-		shader.setInt("material.normal", 15);
-	}
+		shader.setInt("material.normal", LIMIT_TEXTURE);
 
 	if (heightNr <= 1)
-	{
-		shader.setInt("material.height", 15);
-	}
+		shader.setInt("material.height", LIMIT_TEXTURE);
 
 	if (emissionNr <= 1)
-	{
-		shader.setInt("material.emission", 15);
-	}
+		shader.setInt("material.emission", LIMIT_TEXTURE);
 
 	//En caso de que no haya un valor de brillo, establece uno.
 	glUniform1f(glGetUniformLocation(shader.ID, "material.shininess"), 16.0f);
