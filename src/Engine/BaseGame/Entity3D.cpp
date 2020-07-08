@@ -27,6 +27,7 @@ Entity3D::~Entity3D()
 
 void Entity3D::MoveForward2Axis(float speed)
 {
+	cout << "holaaaaaaaaaaaaaaaaaaaa" << endl;
 	SetPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
 }
 void Entity3D::Draw(bool wireframeActive)
@@ -40,11 +41,11 @@ void Entity3D::Draw(bool wireframeActive)
 	model3D.Draw(model);
 }
 
-void Entity3D::Set(string modelPath, Color color, bool flipUVs, Light light)
+void Entity3D::Set(string modelPath, Color color, bool flipUVs)
 {
-	if (light.exists)
+	if (BaseGame::lightContainer.exists)
 	{
-		shader=light.shader;
+		shader = BaseGame::lightContainer.shader;
 		model3D.shader = shader;
 	}
 	else

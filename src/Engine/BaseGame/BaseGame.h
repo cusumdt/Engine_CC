@@ -13,8 +13,9 @@
 #include "Camera.h"
 #include "Model.h"
 #include "Entity3D.h"
-#include "Light.h"
+//#include "Light.h"
 #include "CustomVector.h"
+#include "LightContainer.h"
 
 #define DLLEXPORT __declspec(dllexport)
 
@@ -36,6 +37,7 @@ namespace Engine
 			Input input;
 		public:
 			BaseGame();
+			static LightContainer lightContainer;
 			static Renderer _render;
 			void Init(int width, int height, string windowName);
 			void GameLoop();

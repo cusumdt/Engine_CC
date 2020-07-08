@@ -41,7 +41,7 @@ namespace Engine
 		void MoveForward2Axis(float speed);
 		void Draw(bool wireframeActive);
 
-		void Set(string modelPath , Color color, bool flipUVs, Light light);
+		void Set(string modelPath , Color color, bool flipUVs);
 		void SetTexture(int meshIndex, string type, string path);
 		void SetMaterial(const char* path, GLuint type, bool flip, GLint FilteringOption);
 		void SetParent(Entity3D newParent);

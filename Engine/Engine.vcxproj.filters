@@ -67,6 +67,18 @@
     <ClCompile Include="..\src\Engine\BaseGame\Importer.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Engine\BaseGame\Light-Ambient.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Engine\BaseGame\LightContainer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Engine\BaseGame\Light-Directional.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Engine\BaseGame\Light-Point.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Engine\BaseGame\Animation.h">
@@ -136,6 +148,18 @@
       <Filter>Archivos de encabezado\Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\Importer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Engine\BaseGame\Light-Ambient.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Engine\BaseGame\LightContainer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Engine\BaseGame\Light-Directional.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Engine\BaseGame\Light-Point.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,8 @@
 using namespace Engine;
 
 Renderer BaseGame::_render;
+LightContainer BaseGame::lightContainer;
+
 
 BaseGame::BaseGame()
 {
@@ -16,6 +18,7 @@ void BaseGame::Init(int width, int height, string windowName)
 	_window.Open(width, height, windowName.c_str());
 	_window.setRenderer(_render);
 	input.setWindow(_window.getWindow());
+	BaseGame::lightContainer.SetLightContainer();
 }
 
 void BaseGame::GameLoop()

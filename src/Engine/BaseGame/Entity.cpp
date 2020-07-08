@@ -111,6 +111,7 @@ void Entity::SetPosition(vec3 _pos)
 {
 	if (_3D)
 	{
+		
 		mat4 model = modelOriginal;
 		model = glm::scale(modelOriginal, scale);
 

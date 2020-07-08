@@ -312,6 +312,7 @@ void Model::SetModel(string _path, bool _flipUVs, mat4 _model)
 void Model::Draw(mat4 _model)
 {
 	shader.use();
+	BaseGame::lightContainer.SetLights();
 
 	// view/projection transformations
 	mat4 proj = BaseGame::_render.GetProjection();
