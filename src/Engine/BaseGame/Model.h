@@ -40,13 +40,12 @@ namespace Engine
 		void GenerateBoundingBox();
 
 	public:
-		int currentLayer;
 		Shader shader;
 		vec3 boundingBoxMin;
 		vec3 boundingBoxMax;
 
 	public:
-		Model():boundingBoxMax(0),boundingBoxMin(0),currentLayer(0){};
+		Model():boundingBoxMax(0),boundingBoxMin(0){};
 		void SetMeshTexture(int _meshIndex, Texture _texture);
 		void SetModel(string _path, bool _flipUVs, mat4 _model);
 		inline vector<Mesh> GetMeshes() {return meshObjects;}

@@ -4,8 +4,6 @@
 #include <sstream>
 using namespace Engine;
 
-
-
 Renderer::Renderer() 
 	:
 	_red(0),

@@ -63,9 +63,9 @@ void Entity3D::Set(string modelPath, Color color, bool flipUVs, Light light)
 
 	for (int i = 0; i < meshObjects.size(); i++)
 	{
-		Entity3D newChild;
-		newChild.layer = meshObjects[i].layer;
-		entities.push_back(newChild);
+		Entity3D child;
+		child.layer = meshObjects[i].layer;
+		entities.push_back(child);
 	}
 
 	for (int i = entities.size() - 1; i >= 0; i--)
@@ -96,18 +96,18 @@ void Entity3D::Set(string modelPath, Color color, bool flipUVs, Light light)
 	boundingBoxMin = model3D.boundingBoxMin;
 	boundingBoxMax = model3D.boundingBoxMax;
 }
-void Entity3D::SetParent(Entity3D newParent)
+void Entity3D::SetParent(Entity3D _parent)
 {
-	parent.push_back(newParent);
+	parent.push_back(_parent);
 }
 void Entity3D::SetTexture(int meshIndex, string type, string path)
 {
-	Texture newTexture;
-	newTexture.id = TextureFromFile(path,false);
-	newTexture.type = type;
-	newTexture.path = path;
+	Texture _texture;
+	_texture.id = TextureFromFile(path,false);
+	_texture.type = type;
+	_texture.path = path;
 
-	model3D.SetMeshTexture(meshIndex, newTexture);
+	model3D.SetMeshTexture(meshIndex, _texture);
 }
 void Entity3D::SetMaterial(const char* path, GLuint type, bool flip, GLint FilteringOption)
 {
