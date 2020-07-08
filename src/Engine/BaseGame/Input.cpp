@@ -15,8 +15,6 @@ Input::Input()
 	window = nullptr;
 }
 
-
-
 void Input::setWindow(GLFWwindow* _window)
 {
 	window = _window;
@@ -30,7 +28,7 @@ void Input::setWindow(GLFWwindow* _window)
 	lastMousePos.y = static_cast<float>(m_viewport[3]) / 2;
 }
 
-bool Input::GetInput(int key)
+bool Input::GetKey(int key)
 {
 	int state = glfwGetKey(window, key);
 	if (state == GLFW_PRESS)
@@ -40,7 +38,7 @@ bool Input::GetInput(int key)
 	return false;
 }
 
-bool Input::GetInputDown(int key)
+bool Input::GetKeyDown(int key)
 {
 	bool keyCurrentlyPressed = glfwGetKey(window, key) == GLFW_PRESS;
 	if (!isKeyPressed[key] && keyCurrentlyPressed)
@@ -52,17 +50,17 @@ bool Input::GetInputDown(int key)
 	return false;
 }
 
+vec3 Input::GetDirection()
+{
+	return Input::mouseDirection; 
+}
+
 void Input::SetMouseCaptureMode(bool isActive)
 {
 	if (isActive)
-	{
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	}
 	else
-	{
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-	}
-
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
@@ -99,7 +97,3 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 	Input::mouseDirection = glm::normalize(direction);
 }
 
-vec3 Input::GetDirection()
-{
-	return Input::mouseDirection;
-}

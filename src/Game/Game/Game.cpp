@@ -55,47 +55,47 @@ void Game::InitGame()
 
 void Game::Update(Time deltaTime)
 {
-	if (input.GetInput(GLFW_KEY_D))
+	if (input.GetKey(GLFW_KEY_D))
 	{
 		camera.SetPosition(camera.GetPosition() + glm::normalize(glm::cross(camera.GetFront(), camera.GetUp())) * movementSpeed * static_cast<float>(deltaTime));
 	}
 
-	if (input.GetInput(GLFW_KEY_A))
+	if (input.GetKey(GLFW_KEY_A))
 	{
 
 		camera.SetPosition(camera.GetPosition() - glm::normalize(glm::cross(camera.GetFront(),camera.GetUp())) * movementSpeed * static_cast<float>(deltaTime));
 	}
 
-	if (input.GetInput(GLFW_KEY_W))
+	if (input.GetKey(GLFW_KEY_W))
 	{
 
 		camera.SetPosition(camera.GetPosition() + (camera.GetFront() * movementSpeed * static_cast<float>(deltaTime)));
 	}
 
-	if (input.GetInput(GLFW_KEY_S))
+	if (input.GetKey(GLFW_KEY_S))
 	{
 		camera.SetPosition(camera.GetPosition() - (camera.GetFront() * movementSpeed * static_cast<float>(deltaTime)));
 	}
 
-	if (input.GetInput(GLFW_KEY_LEFT))
+	if (input.GetKey(GLFW_KEY_LEFT))
 	{
 		character.Rotate(vec3(0, 270 * deltaTime, 0));
 		box.Rotate(vec3(0, 270 * deltaTime, 0));
 	}
-	if (input.GetInput(GLFW_KEY_RIGHT))
+	if (input.GetKey(GLFW_KEY_RIGHT))
 	{
 		character.Rotate(vec3(0, -270 * deltaTime, 0));
 		box.Rotate(vec3(0, -270 * deltaTime,0));
 	}
-	if (input.GetInput(GLFW_KEY_UP))
+	if (input.GetKey(GLFW_KEY_UP))
 	{
 		character.MoveForward2Axis(90 * deltaTime);
 	}
-	if (input.GetInput(GLFW_KEY_DOWN))
+	if (input.GetKey(GLFW_KEY_DOWN))
 	{
 	}
 
-	if (input.GetInput(GLFW_KEY_ESCAPE))
+	if (input.GetKey(GLFW_KEY_ESCAPE))
 	{
 		CloseApplication();
 	}
@@ -108,7 +108,7 @@ void Game::Update(Time deltaTime)
 	
 	skybox.Draw();
 	character.Draw();
-	if (input.GetInput(GLFW_KEY_SPACE))
+	if (input.GetKey(GLFW_KEY_SPACE))
 	{
 		box.Draw();
 	}

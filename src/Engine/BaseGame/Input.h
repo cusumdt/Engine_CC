@@ -11,18 +11,19 @@ namespace Engine
 		GLFWwindow* window;
 		bool isKeyPressed[GLFW_KEY_LAST] = { false };
 	public:
-		Input();
-		static bool firstMouseInput;
-		static vec2 lastMousePos;
 		static float yaw;
 		static float pitch;
+		static bool firstMouseInput;
+		static vec2 lastMousePos;
 		static vec3 mouseDirection;
+
+	public:
+		Input();
 		void SetMouseCaptureMode(bool isActive);
 		void setWindow(GLFWwindow* _window);
-		bool GetInput(int key);
-		bool GetInputDown(int key);
+		bool GetKey(int key);
+		bool GetKeyDown(int key);
 		vec3 GetDirection();
-		
 	};
 }
 
