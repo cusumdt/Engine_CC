@@ -63,23 +63,3 @@ void Window::setRenderer(Renderer _render)
 
 	windowRenderer.SetView(initialView);
 }
-
-GLFWwindow* Window::getWindow()
-{
-	return window;
-}
-
-Renderer Engine::Window::getRenderer()
-{
-	return windowRenderer;
-}
-
-float Window::GetWindowHeight()
-{
-	return windowHeight;
-}
-
-float Window::GetWindowWidth()
-{
-	return windowWidth;
-}

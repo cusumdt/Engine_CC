@@ -22,11 +22,10 @@ namespace Engine
 			Window();
 			bool Open(int width,int height, const char windowName[64]);
 			void setRenderer(Renderer _render);
-			GLFWwindow* getWindow();
-			Renderer getRenderer();
-			float GetWindowHeight();
-			float GetWindowWidth();
-			//~Window();
+			inline GLFWwindow* getWindow() { return window; }
+			inline Renderer getRenderer() { return windowRenderer; };
+			inline float GetWindowHeight() { return windowHeight; };
+			inline float GetWindowWidth() { return windowWidth; };
 	};
 }
 
