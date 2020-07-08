@@ -3,11 +3,10 @@
 using namespace Engine;
 
 Material::Material()
+	:
+	texture(0)
 {
-	texture = 0;
 }
-
-
 
 void Material::SetTexture(const char* path, GLuint type, bool flip,GLint FilteringOption)
 {
@@ -39,11 +38,5 @@ void Material::SetTexture(const char* path, GLuint type, bool flip,GLint Filteri
 
 	stbi_image_free(data);
 
-	
 	texture = newTexture;
-}
-
-unsigned int Material::GetTexture()
-{
-	return texture;
 }

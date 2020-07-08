@@ -15,7 +15,7 @@ namespace Engine
 		Material();
 		~Material() {};
 		void SetTexture(const char* path, GLuint type, bool flip,GLint FilteringOption);
-		unsigned int GetTexture();
+		inline unsigned int GetTexture(){ return texture; }
 	};
 }
 
