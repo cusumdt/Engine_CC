@@ -26,11 +26,12 @@ void Game::InitGame()
 	background.Rotate(vec3(0, 270, 0));
 
 	//Configuracion de Luces
-	testAmbLight.SetLight(vec3(0.f, 0.f, 0.f), vec3(1.0f,1.0f,1.0f));
-	testDirLight.SetLight(vec3(0.0f, 0.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f));
-	testLight.SetLight(vec3(-200.f, 0.0f, 0.f), vec3(0.0f, 0.0f, 1.0f), 1.0f);
-	testLight2.SetLight(vec3(200.f, 5.0f, 0.f), vec3(1.0f, 0.0f, 0.0f),1.0f);
-	light3.SetLight(vec3(0.0f, -400.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), 3.0f);
+	ambient.SetLight(vec3(0.f, 0.f, 0.f), vec3(1.0f,1.0f,1.0f));
+	directional.SetLight(vec3(0.0f, 0.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f));
+	point1.SetLight(vec3(-200.f, 0.0f, 0.f), vec3(0.0f, 0.0f, 1.0f), 1.0f);
+	point2.SetLight(vec3(200.f, 5.0f, 0.f), vec3(1.0f, 0.0f, 0.0f),1.0f);
+	point3.SetLight(vec3(0.0f, -400.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), 3.0f);
+
 	// Configuracion de Skybox
 	skybox.Set("res/model/skybox/Skybox.fbx", Colors.White, false);
 	skybox.Scale(vec3(3, 3, 3));
@@ -79,6 +80,16 @@ void Game::Update(Time deltaTime)
 		camera.SetPosition(camera.GetPosition() - (camera.GetFront() * movementSpeed * static_cast<float>(deltaTime)));
 	}
 
+	if (input.GetKey(GLFW_KEY_Q))
+	{
+		camera.SetPosition(camera.GetPosition() - (camera.GetUp() * movementSpeed * static_cast<float>(deltaTime)));
+	}
+
+	if (input.GetKey(GLFW_KEY_E))
+	{
+		camera.SetPosition(camera.GetPosition() - (-camera.GetUp() * movementSpeed * static_cast<float>(deltaTime)));
+	}
+
 	if (input.GetKey(GLFW_KEY_LEFT))
 	{
 		character.Rotate(vec3(0, 270 * deltaTime, 0));
@@ -95,6 +106,7 @@ void Game::Update(Time deltaTime)
 	}
 	if (input.GetKey(GLFW_KEY_DOWN))
 	{
+		character.MoveForward2Axis(-90 * deltaTime);
 	}
 
 	if (input.GetKey(GLFW_KEY_ESCAPE))

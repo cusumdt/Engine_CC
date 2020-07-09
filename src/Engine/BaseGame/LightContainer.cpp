@@ -75,7 +75,7 @@ void LightContainer::SetLights()
 	shader.setVec3("dirLight.diffuse", diffuseColorDir);
 	shader.setVec3("dirLight.specular", 1.5f, 1.5f, 1.5f);
 
-	for (int i = 0; i < lightsTotal; i++) // se le pasa el valor de luces total al shader para que setee todas las point light que estan en escena
+	for (int i = 0; i < lightsTotal; i++) 
 	{
 		string pointLightsIndex = "pointLights[" + std::to_string(i) + "].";
 

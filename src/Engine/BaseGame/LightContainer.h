@@ -15,7 +15,7 @@
 
 namespace Engine
 {
-	class DLLEXPORT LightContainer //Contenedor de distintos tipos de luces: solo 1 ambient y 1 directional y un maximo de 10 pointlights seteadas en el shader
+	class DLLEXPORT LightContainer 
 	{
 	private:
 		vector<LightPoint> pointLights;
@@ -25,8 +25,8 @@ namespace Engine
 		Shader shader;
 		glm::vec3 pos;
 		glm::vec3 lightColor;
-		int lightsTotal; //cant de pointlights totales en la escena
-		bool exists; //booleano que determina si hay luces en la escena y segun su valor setea el shader correspondiente
+		int lightsTotal; 
+		bool exists;
 		int ID;
 	public:
 		LightContainer();
@@ -37,8 +37,6 @@ namespace Engine
 		void AddAmbientLight(LightAmbient _ambLight);
 		void AddDirectionalLight(LightDirectional _dirLight);
 		void AddPointLight(LightPoint _pointLight);
-
-
 	};
 }
 

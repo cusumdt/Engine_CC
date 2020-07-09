@@ -22,11 +22,11 @@ namespace Engine
 		Entity3D character;
 		Entity3D skybox;
 		Entity3D box;
-		LightPoint testLight;
-		LightPoint testLight2;
-		LightAmbient testAmbLight;
-		LightDirectional testDirLight;
-		LightPoint light3;
+		LightPoint point1;
+		LightPoint point2;
+		LightPoint point3;
+		LightAmbient ambient;
+		LightDirectional directional;
 	
 	public:
 		Game();

@@ -3,7 +3,6 @@
 
 using namespace Engine;
 
-
 LightDirectional::LightDirectional()
 	:
 	direction(VECTOR_ZERO),
@@ -21,7 +20,6 @@ LightDirectional::LightDirectional(int _id)
 {
 
 }
-
 
 LightDirectional::~LightDirectional()
 {
