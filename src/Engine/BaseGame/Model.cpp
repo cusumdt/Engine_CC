@@ -67,8 +67,6 @@ unsigned int TextureFromFile(const char* _path, const string& _directory, bool _
 
 void Model::loadModel(string _path, bool _flipUVs, mat4 _model)
 {
-	boundingBoxMin = vec3(INT_MAX, INT_MAX, INT_MAX);
-	boundingBoxMax = vec3(INT_MIN, INT_MIN, INT_MIN);
 	// Lee el archivo
 	Assimp::Importer importer;
 	const aiScene* scene;
@@ -90,7 +88,7 @@ void Model::loadModel(string _path, bool _flipUVs, mat4 _model)
 	}
 	// retrieve the directory path of the filepath
 	directory = _path.substr(0, _path.find_last_of('/'));
-
+	currentLayer = 0;
 	// process ASSIMP's root node recursively
 	processNode(scene->mRootNode, scene);
 
@@ -114,13 +112,22 @@ void Model::loadModel(string _path, bool _flipUVs, mat4 _model)
 
 		for (int j = 0; j < meshObjects.size(); j++)
 		{
+			
 			if (meshObjects[j].layer == value)
 			{
 				meshObjects[j].layer = layerValue;
+				if (layerValue == 1)
+				{
+					layerValue++;
+				}
 			}
+		
+			cout << layerValue << endl;
+			
 		}
-
+		
 		layerValue++;
+		//cout <<"LayerValue:"<<layerValue << endl;
 	}
 }
 
@@ -133,6 +140,8 @@ void Model::processNode(aiNode* _node, const aiScene* _scene)
 		// la scene contiene toda la data, el nodo solo esta para mantener todo en orden (como las relaciones entre nodos).
 		aiMesh* mesh = _scene->mMeshes[_node->mMeshes[i]];
 		meshObjects.push_back(processMesh(mesh, _scene));
+		string name = _node->mName.C_Str();
+		names.push_back(name);
 	}
 
 	// una vez procesados todos los meshObjects (si es que hay alguno) procesamos los nodos hijos de manera recursiva.
@@ -238,7 +247,7 @@ Mesh Model::processMesh(aiMesh* _mesh, const aiScene* _scene)
 	textures.insert(textures.end(), emissionMaps.begin(), emissionMaps.end());
 
 	// return a mesh object created from the extracted mesh data
-	return Mesh(vertices, indices, textures);
+	return Mesh(vertices, indices, textures, currentLayer);
 }
 
 vector<Texture> Model::loadMaterialTextures(aiMaterial* _mat, aiTextureType _type, string _typeName)
@@ -285,7 +294,6 @@ void Model::GenerateBoundingBox()
 		boundingBoxMax.x, boundingBoxMin.y, boundingBoxMax.z,
 		boundingBoxMax.x, boundingBoxMax.y, boundingBoxMax.z
 	};
-	cout << "xMin" << boundingBoxMin.x << endl << "yMin" << boundingBoxMin.y << endl << "zMin" << boundingBoxMin.z << endl<< "xMax" << boundingBoxMax.x <<endl << "yMax" << boundingBoxMax.y << endl << "zMax" << boundingBoxMax.z << endl;
 	// Box
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -300,8 +308,14 @@ void Model::GenerateBoundingBox()
 
 void Model::SetMeshTexture(int _meshIndex, Texture _texture)
 {
-	textures_loaded.push_back(_texture);
-	meshObjects.at(_meshIndex).textures.push_back(_texture);
+	if (_meshIndex > 0)
+	{
+		int test = _meshIndex - 1;
+
+		textures_loaded.push_back(_texture);
+		meshObjects.at(test).textures.push_back(_texture);
+	}
+
 }
 
 void Model::SetModel(string _path, bool _flipUVs, mat4 _model)
@@ -325,10 +339,17 @@ void Model::Draw(mat4 _model)
 	for (unsigned int i = 0; i < meshObjects.size(); i++)
 		meshObjects[i].Draw(shader);
 
-	GenerateBoundingBox();
-
 }
 
+void Model::EmptyMeshes()
+{
+	meshObjects.clear();
+}
+
+void Model::AddMesh(Mesh mesh)
+{
+	meshObjects.push_back(mesh);
+}
 
 
 

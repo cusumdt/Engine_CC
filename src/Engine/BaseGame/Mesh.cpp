@@ -4,12 +4,12 @@
 
 using namespace Engine;
 
-Mesh::Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures)
+Mesh::Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures, int _layer)
 {
 	vertices = _vertices;
 	indices = _indices;
 	textures = _textures;
-
+	layer = _layer;
 	SetupMesh();
 }
 

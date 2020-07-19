@@ -29,6 +29,7 @@ namespace Engine
 	{
 	private:
 		vector<Mesh> meshObjects;
+		vector<string> names;
 		vector<Texture> textures_loaded;
 		string directory;
 
@@ -43,14 +44,18 @@ namespace Engine
 		Shader shader;
 		vec3 boundingBoxMin;
 		vec3 boundingBoxMax;
+		bool isNull;
+		int currentLayer;
 
 	public:
-		Model():boundingBoxMax(0),boundingBoxMin(0){};
+		Model():boundingBoxMax(0),boundingBoxMin(0),isNull(true){};
 		void SetMeshTexture(int _meshIndex, Texture _texture);
 		void SetModel(string _path, bool _flipUVs, mat4 _model);
-		inline vector<Mesh> GetMeshes() {return meshObjects;}
 		void Draw(mat4 _model);
-		
+		void EmptyMeshes();
+		void AddMesh(Mesh mesh);
+		inline vector<Mesh> GetMeshes() { return meshObjects; }
+		inline vector<string> GetNames() { return names; }
 	}; 
 }
 

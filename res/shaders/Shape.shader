@@ -1,35 +1,26 @@
 #shader vertex
 #version 330 core
+layout(location = 0) in vec3 aPos;
 
-in vec4 position;
-in vec4 color;
-in vec2 texturePos;
+out vec3 ourColor;
 
-out vec4 Color;
-uniform mat4 myMatrix;
-out vec2 TexCoord;
 uniform mat4 model;
 uniform mat4 view;
-uniform mat4 proj;
+uniform mat4 projection;
 
 void main()
 {
-	Color = color;
-	TexCoord = texturePos;
-	gl_Position =proj * view * model * position;
-};
+    gl_Position = projection * view * model * vec4(aPos, 1.0f);
+    ourColor = vec3(0.0f, 0.8f, 0.0f);
+}
 
 #shader fragment
 #version 330 core
+out vec4 FragColor;
 
-in vec4 Color;
-out vec4 outColor;
-in vec2 TexCoord;
-
-uniform sampler2D texture1;
-uniform sampler2D texture2;
+in vec3 ourColor;
 
 void main()
 {
-	outColor = texture(texture1, TexCoord) * Color;
-};
+    FragColor = vec4(ourColor, 1.0f);
+}

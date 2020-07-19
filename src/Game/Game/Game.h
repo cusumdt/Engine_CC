@@ -21,7 +21,6 @@ namespace Engine
 		float movementSpeed;
 		Entity3D character;
 		Entity3D skybox;
-		Entity3D box;
 		LightPoint point1;
 		LightPoint point2;
 		LightPoint point3;

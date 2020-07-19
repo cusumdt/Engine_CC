@@ -44,8 +44,8 @@ namespace Engine
 	private:
 		void SetupMesh();
 	public:
-		Mesh() {};
-		Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures);
+		Mesh(){};
+		Mesh(vector<Vertex> _vertices, vector<unsigned int> _indices, vector<Texture> _textures, int _layer);
 		void Draw(Shader shader);
 	};
 }
