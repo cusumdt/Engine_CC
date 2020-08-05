@@ -19,10 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Engine\BaseGame\AABB.cpp" />
+    <ClCompile Include="..\src\Engine\BaseGame\BoundingBox.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Animation.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\BaseGame.cpp" />
-    <ClCompile Include="..\src\Engine\BaseGame\BdB.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Camera.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\CollisionManager.cpp" />
     <ClCompile Include="..\src\Engine\BaseGame\Color.cpp" />
@@ -50,7 +49,6 @@
   <ItemGroup>
     <ClInclude Include="..\src\Engine\BaseGame\Animation.h" />
     <ClInclude Include="..\src\Engine\BaseGame\BaseGame.h" />
-    <ClInclude Include="..\src\Engine\BaseGame\BdB.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Camera.h" />
     <ClInclude Include="..\src\Engine\BaseGame\CollisionManager.h" />
     <ClInclude Include="..\src\Engine\BaseGame\Color.h" />

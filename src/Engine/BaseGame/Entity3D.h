@@ -29,7 +29,7 @@ namespace Engine
 		glm::vec3 actualVertexArray[8];
 	};
 
-	class DLLEXPORT AABB
+	class DLLEXPORT BoundingBox
 	{
 		glm::vec3 vertex[8];
 		unsigned int VAO, VBO, EBO;
@@ -38,7 +38,7 @@ namespace Engine
 		Shader boxShader;
 
 	public:
-		AABB();
+		BoundingBox();
 		void set();
 		void CalculateBoundingBox(Bounds bounds);
 		void CreateBuffers();
@@ -66,8 +66,8 @@ namespace Engine
 		vector<Entity3D> parent;
 	public:
 		Shader shader;
-		AABB box;
-		AABB resizableBox;
+		BoundingBox box;
+		BoundingBox resizableBox;
 		Bounds bounds;
 		vec3 boundingBoxMin;
 		vec3 boundingBoxMax;
@@ -100,7 +100,7 @@ namespace Engine
 		Entity3D* GetChild(int _index);
 		Entity3D* GetChild(string name);
 		inline mat4* GetWorldModel() { return &worldModel; };
-		inline AABB GetAABB() { return box; }
+		inline BoundingBox GetAABB() { return box; }
 		void setPosition(vec3 translation);
 		void Rotate(vec3 _rotation);
 		void Scale(vec3 _scale);

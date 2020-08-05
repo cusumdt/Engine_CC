@@ -61,9 +61,6 @@
     <ClCompile Include="..\src\Engine\BaseGame\Light.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Engine\BaseGame\BdB.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Engine\BaseGame\Importer.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -79,7 +76,7 @@
     <ClCompile Include="..\src\Engine\BaseGame\Light-Point.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Engine\BaseGame\AABB.cpp">
+    <ClCompile Include="..\src\Engine\BaseGame\BoundingBox.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -139,9 +136,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\Light.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Engine\BaseGame\BdB.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Engine\BaseGame\Time.h">

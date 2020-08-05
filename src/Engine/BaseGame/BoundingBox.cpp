@@ -5,10 +5,10 @@
 #include "BaseGame.h"
 
 
-AABB::AABB()
+BoundingBox::BoundingBox()
 {
 }
-void AABB::set()
+void BoundingBox::set()
 {
 	ShaderProgramSource source = Shader::ShaderParser("res/shaders/Shape.shader");
 	boxShader.ID = Shader::CreateShader(source.vertexSource, source.fragmentSource);
@@ -42,7 +42,7 @@ void AABB::set()
 }
 
 
-void AABB::CalculateBoundingBox(Bounds bounds)
+void BoundingBox::CalculateBoundingBox(Bounds bounds)
 {
 	glm::vec3 boundingBoxVertex[8] =
 	{
@@ -62,7 +62,7 @@ void AABB::CalculateBoundingBox(Bounds bounds)
 	Setup();
 }
 
-void AABB::CreateBuffers()
+void BoundingBox::CreateBuffers()
 {
 	// create buffers/arrays
 	glGenVertexArrays(1, &VAO);
@@ -70,7 +70,7 @@ void AABB::CreateBuffers()
 	glGenBuffers(1, &EBO);
 }
 
-void AABB::Setup()
+void BoundingBox::Setup()
 {
 	glBindVertexArray(VAO);
 
@@ -87,7 +87,7 @@ void AABB::Setup()
 	glBindVertexArray(0);
 }
 
-void AABB::Draw(mat4 model)
+void BoundingBox::Draw(mat4 model)
 {
 	boxShader.use();
 	glBindVertexArray(VAO);
@@ -109,7 +109,7 @@ void AABB::Draw(mat4 model)
 	glBindVertexArray(0);
 }
 
-glm::vec3 AABB::GetVertex(unsigned index)
+glm::vec3 BoundingBox::GetVertex(unsigned index)
 {
 	return vertex[index];
 }
