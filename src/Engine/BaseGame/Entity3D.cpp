@@ -25,7 +25,7 @@ Entity3D::~Entity3D()
 
 void Entity3D::MoveForward2Axis(float speed)
 {
-	SetPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
+	setPosition(vec3(GetPosition().x + speed * glm::cos((GetRotation().y - 90) * glm::pi<float>() / 180), GetPosition().y, GetPosition().z - speed * (glm::sin((GetRotation().y - 90) * glm::pi<float>() / 180))));
 }
 
 void Entity3D::Draw()
@@ -242,8 +242,9 @@ Entity3D* Entity3D::GetChild(string name)
 
 void Entity3D::setPosition(vec3 _translation)
 {
-	model = glm::translate(model, _translation);
-
+	mat4 tempModel = modelOriginal;
+	model = glm::translate(tempModel, _translation);
+	
 	position = _translation;
 	UpdateModelMatrixAndBoundingBox(model);
 }
@@ -278,8 +279,6 @@ void Entity3D::setPosition(vec3 _translation, mat4 worldModelParent)
 
 void Entity3D::Rotate(vec3 _rotation, mat4 worldModelParent)
 {
-	int testID = childID;
-
 	model = glm::rotate(model, glm::radians(_rotation.x), vec3(1.0f, 0.0f, 0.0f));
 	model = glm::rotate(model, glm::radians(_rotation.y), vec3(0.0f, 1.0f, 0.0f));
 	model = glm::rotate(model, glm::radians(_rotation.z), vec3(0.0f, 0.0f, 1.0f));
