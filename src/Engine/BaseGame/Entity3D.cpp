@@ -297,59 +297,37 @@ void Entity3D::Scale(vec3 _scale, mat4 worldModelParent)
 
 void Entity3D::UpdateModelMatrix(mat4 worldMatrix)
 {
-	if (parent.size() > 0 || layer == 1)
-	{
-		worldModel = worldMatrix * model;
-	}
-	else
-	{
-		worldModel = worldMatrix;
-	}
+	bool passToWorldModel = parent.size() > 0 || layer == 1;
+	worldModel = passToWorldModel ? worldMatrix * model : worldMatrix;
 
-	if (children.size() > 0)
-	{
-		for (unsigned int i = 0; i < children.size(); i++)
-		{
-			children[i].UpdateModelMatrix(this->worldModel);
-		}
-	}
+	if (!(children.size() > 0)) return;
+	
+	for (unsigned int i = 0; i < children.size(); i++)
+		children[i].UpdateModelMatrix(this->worldModel);
+	
 }
 
 Bounds Entity3D::UpdateModelMatrixAndBoundingBox(mat4 worldMatrix)
 {
-	if (parent.size() > 0 || layer == 1)
-	{
-		worldModel = worldMatrix * model;
-	}
-	else
-	{
-		worldModel = worldMatrix;
-	}
-
 	Bounds cBounds;
 	Bounds resultantBounds;
-
-	for (unsigned int i = 0; i < children.size(); i++)
-	{
-		cBounds = CombineBounds(children[i].UpdateModelMatrixAndBoundingBox(this->worldModel), cBounds);
-	}
-
 	VertexArray vertexArray;
 
+	bool passToWorldModel = parent.size() > 0 || layer == 1;
+	worldModel = passToWorldModel ? worldMatrix * model : worldMatrix;
+
+	for (unsigned int i = 0; i < children.size(); i++)
+		cBounds = CombineBounds(children[i].UpdateModelMatrixAndBoundingBox(this->worldModel), cBounds);
+	
 	for (int i = 0; i < 8; i++)
-	{
 		vertexArray.actualVertexArray[i] = box.GetVertex(i);
-	}
-
+	
 	bounds = GenerateBoundsByTransformedVertex(vertexArray, model);
-
 	resultantBounds = CombineBounds(cBounds, bounds);
 
-	for (int i = model3D.GetMeshes().size() - 1; i >= 0; i--)
-	{
+	for (int i = model3D.GetMeshes().size() - 1; i >= 0; i--)	
 		CalculateBounds(model3D.GetMeshes().at(i).vertices);
-	}
-
+	
 	box.CalculateBoundingBox(bounds);
 	resizableBox.CalculateBoundingBox(resultantBounds);
 
@@ -358,26 +336,24 @@ Bounds Entity3D::UpdateModelMatrixAndBoundingBox(mat4 worldMatrix)
 
 void Entity3D::CalculateBounds(vector<Vertex> vertices)
 {
-
-	if (!vertices.empty())
+	if (vertices.empty()) return;
+	
+	Bounds resetBounds;
+	bounds = resetBounds;
+	for (int i = 0; i < vertices.size(); i++)
 	{
-		Bounds resetBounds;
-		bounds = resetBounds;
-		for (int i = 0; i < vertices.size(); i++)
-		{
-			if (vertices[i].Position.x < bounds.minX)
-				bounds.minX = vertices[i].Position.x;
-			if (vertices[i].Position.x > bounds.maxX)
-				bounds.maxX = vertices[i].Position.x;
-			if (vertices[i].Position.y < bounds.minY)
-				bounds.minY = vertices[i].Position.y;
-			if (vertices[i].Position.y > bounds.maxY)
-				bounds.maxY = vertices[i].Position.y;
-			if (vertices[i].Position.z < bounds.minZ)
-				bounds.minZ = vertices[i].Position.z;
-			if (vertices[i].Position.z > bounds.maxZ)
-				bounds.maxZ = vertices[i].Position.z;
-		}
+		if (vertices[i].Position.x < bounds.minX)
+			bounds.minX = vertices[i].Position.x;
+		if (vertices[i].Position.x > bounds.maxX)
+			bounds.maxX = vertices[i].Position.x;
+		if (vertices[i].Position.y < bounds.minY)
+			bounds.minY = vertices[i].Position.y;
+		if (vertices[i].Position.y > bounds.maxY)
+			bounds.maxY = vertices[i].Position.y;
+		if (vertices[i].Position.z < bounds.minZ)
+			bounds.minZ = vertices[i].Position.z;
+		if (vertices[i].Position.z > bounds.maxZ)
+			bounds.maxZ = vertices[i].Position.z;
 	}
 }
 
