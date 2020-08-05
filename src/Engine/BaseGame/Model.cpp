@@ -116,10 +116,6 @@ void Model::loadModel(string _path, bool _flipUVs, mat4 _model)
 			if (meshObjects[j].layer == value)
 			{
 				meshObjects[j].layer = layerValue;
-				if (layerValue == 1)
-				{
-					layerValue++;
-				}
 			}
 		
 			cout << layerValue << endl;
@@ -147,7 +143,9 @@ void Model::processNode(aiNode* _node, const aiScene* _scene)
 	// una vez procesados todos los meshObjects (si es que hay alguno) procesamos los nodos hijos de manera recursiva.
 	for (unsigned int i = 0; i < _node->mNumChildren; i++)
 	{
+		currentLayer++;
 		processNode(_node->mChildren[i], _scene);
+		currentLayer--;
 	}
 }
 

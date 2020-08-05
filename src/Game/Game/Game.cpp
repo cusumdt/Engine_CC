@@ -39,7 +39,7 @@ void Game::InitGame()
 	skybox.SetTexture(1,1, "texture_diffuse", "res/textures/models/skybox/Sky.jpg");
 	
 	// Configuracion de Personaje
-	character.Set("res/model/character/box4.fbx", false);
+	character.Set("res/model/character/box5.fbx", false);
 	character.Scale(vec3(10, 10, 10));
 	character.SetPosition(vec3(10,0,0));
 	character.Rotate(vec3(0, 0, 0));
@@ -121,8 +121,9 @@ void Game::Update(Time deltaTime)
 	}
 	if (input.GetKey(GLFW_KEY_X))
 	{
-		character.GetChild("pCube2")->Rotate(vec3(0, -270 * deltaTime, 0), character.GetChild("pCube1")->worldModel);
+		character.GetChild("pCube6")->Rotate(vec3(0, -270 * deltaTime, 0), character.GetChild("pCube2")->worldModel);
 	}
+
 
 	camera.SetFront(input.GetDirection());
 	camera.SetPosition(camera.GetPosition());
