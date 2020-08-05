@@ -28,7 +28,7 @@ namespace Engine
 	{
 		glm::vec3 actualVertexArray[8];
 	};
-
+	//Crear H
 	class DLLEXPORT AABB
 	{
 		glm::vec3 vertex[8];
@@ -102,7 +102,7 @@ namespace Engine
 		Entity3D* GetChild(int index);
 		Entity3D* GetChild(string name);
 		inline mat4* GetWorldModel() { return &worldModel; };
-		AABB GetAABB() { return box; }
+		inline AABB GetAABB() { return box; }
 		void setPosition(vec3 newTranslation);
 		void Rotate(vec3 newRotation);
 		void Scale(vec3 newScale);
