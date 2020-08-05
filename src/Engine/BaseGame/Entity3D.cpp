@@ -2,7 +2,6 @@
 #include "BaseGame.h"
 #include "Shader.h"
 using namespace Engine;
-using namespace Engine;
 
 Entity3D::Entity3D()
 	:
@@ -41,7 +40,6 @@ void Entity3D::Draw()
 			UpdateModelMatrixAndBoundingBox(worldModel);
 			resizableBox.Draw(worldModel);
 		}
-		//cout << layer << endl;
 	}
 
 	if (children.size() > 0)

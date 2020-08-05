@@ -28,7 +28,7 @@ namespace Engine
 	{
 		glm::vec3 actualVertexArray[8];
 	};
-	//Crear H
+
 	class DLLEXPORT AABB
 	{
 		glm::vec3 vertex[8];
@@ -50,8 +50,8 @@ namespace Engine
 	class DLLEXPORT Entity3D : public Entity
 	{
 	protected:
-		Material texture1;
-		Material texture2;
+		int layer;
+		int childID;
 		float red;
 		float green;
 		float blue;
@@ -59,25 +59,23 @@ namespace Engine
 		vec3 front;
 		vec3 up;
 		vec3 right;
-		int layer;
-		vector<Entity3D> parent;
-		//nuevo
-		int childID;
-		Model entireModel3D;
 		string name;
+		Material texture1;
+		Material texture2;
+		Model entireModel3D;
+		vector<Entity3D> parent;
 	public:
-		vec3 boundingBoxMin;
-		vec3 boundingBoxMax;
 		Shader shader;
-		Model model3D;
-		//nuevo
-		static Entity3D childToGet;
-		static Entity3D parentToGet;
-		Bounds bounds;
 		AABB box;
 		AABB resizableBox;
-		vector<Entity3D> children;
+		Bounds bounds;
+		vec3 boundingBoxMin;
+		vec3 boundingBoxMax;
+		Model model3D;
 		mat4 worldModel;
+		vector<Entity3D> children;
+		static Entity3D childToGet;
+		static Entity3D parentToGet;
 		
 	public:
 		Entity3D();
@@ -98,17 +96,17 @@ namespace Engine
 		inline vec3 GetRotation() { return rotation; }
 
 		//Nuevo
-		void AddChild(Entity3D newChild);
-		Entity3D* GetChild(int index);
+		void AddChild(Entity3D _child);
+		Entity3D* GetChild(int _index);
 		Entity3D* GetChild(string name);
 		inline mat4* GetWorldModel() { return &worldModel; };
 		inline AABB GetAABB() { return box; }
-		void setPosition(vec3 newTranslation);
-		void Rotate(vec3 newRotation);
-		void Scale(vec3 newScale);
-		void setPosition(vec3 newTranslation, mat4 worldModelParent);
-		void Rotate(vec3 newRotation, mat4 worldModelParent);
-		void Scale(vec3 newScale, mat4 worldModelParent);
+		void setPosition(vec3 translation);
+		void Rotate(vec3 _rotation);
+		void Scale(vec3 _scale);
+		void setPosition(vec3 _translation, mat4 worldModelParent);
+		void Rotate(vec3 _rotation, mat4 worldModelParent);
+		void Scale(vec3 _scale, mat4 worldModelParent);
 		void UpdateModelMatrix(mat4 worldMatrix);
 		Bounds UpdateModelMatrixAndBoundingBox(mat4 worldMatrix);
 		void CalculateBounds(vector<Vertex> vertices);

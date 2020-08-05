@@ -25,8 +25,6 @@ void Game::InitGame()
 	background.SetPosition(vec3(900, -10, 0)); // 512 360
 	background.Rotate(vec3(0, 270, 0));
 
-
-
 	//Configuracion de Luces
 	ambient.SetLight(vec3(0.f, 0.f, 0.f), vec3(1.0f,1.0f,1.0f));
 	directional.SetLight(vec3(0.0f, 0.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f));
@@ -60,6 +58,7 @@ void Game::InitGame()
 
 void Game::Update(Time deltaTime)
 {
+
 	if (input.GetKey(GLFW_KEY_D))
 	{
 		camera.SetPosition(camera.GetPosition() + glm::normalize(glm::cross(camera.GetFront(), camera.GetUp())) * movementSpeed * static_cast<float>(deltaTime));
