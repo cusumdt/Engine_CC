@@ -1,0 +1,57 @@
+#ifndef RENDERER_H
+#define RENDERER_H
+#include <iostream>
+#include "Color.h"
+<<<<<<< HEAD
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/transform.hpp>
+=======
+#include "Vector2.h"
+>>>>>>> triangle
+
+#define DLLEXPORT __declspec(dllexport)
+typedef unsigned int GLuint;
+typedef int GLint;
+
+using namespace std;
+
+namespace Graficos1
+{
+	struct ShaderProgramSource
+	{
+		string vertexSource;
+		string fragmentSource;
+	};
+
+	class DLLEXPORT Renderer
+	{
+		private:
+			Color color;
+			float _red;
+			float _green;
+			float _blue;
+			float _alpha;
+		public:
+			Renderer();
+			void SetBackgroundColors(Color backgroundColor);
+			void ChangeBackgroundColor();
+<<<<<<< HEAD
+			void SetTriangle(Color triangleColor);
+			void DrawTriangle();
+			GLuint VertexArrayID;
+			GLuint VertexBuffer;
+			GLint uniModel;
+			unsigned int shader;
+			glm::mat4 myMatrix;
+=======
+			ShaderProgramSource ShaderParser(const string& filepath);
+			unsigned int CompileShader(unsigned int type, const string& source);
+			unsigned int CreateShader(const string& vertexShader, const string& fragmentShader);
+>>>>>>> triangle
+	};
+}
+
+#endif // RENDERER_H

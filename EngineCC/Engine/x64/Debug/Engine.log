@@ -1,0 +1,27 @@
+﻿  Animation.cpp
+  BaseGame.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  CollisionManager.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Entity.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\CollisionManager.h(6,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Entity2D.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Input.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Material.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Renderer.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Material.h(5,10): error C1083:  No se puede abrir el archivo incluir: 'stb_image.h': No such file or directory
+  Shape.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Sprite.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  texture.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Triangle.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\texture.cpp(2,10): error C1083:  No se puede abrir el archivo incluir: 'stb_image.h': No such file or directory
+  Window.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory
+  Generando código...
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Engine\BaseGame\Renderer.h(11,10): error C1083:  No se puede abrir el archivo incluir: 'glm/glm.hpp': No such file or directory

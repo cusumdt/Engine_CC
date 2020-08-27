@@ -1,0 +1,5 @@
+﻿  Game.cpp
+  main.cpp
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\Game\Game\Game.h(8,10): error C1083:  No se puede abrir el archivo incluir: 'BaseGame.h': No such file or directory
+  Generando código...
+F:\Frank\Proyectos Visual Studio\Graficos1EngineV2\Graficos-1-Engine\src\main.cpp(1,10): error C1083:  No se puede abrir el archivo incluir: 'Game.h': No such file or directory
